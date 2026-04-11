@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import { motion } from "framer-motion";
 import { Slide } from "@/components/deck/Slide";
 
@@ -11,17 +12,35 @@ const CoverSlide = () => {
     return (
         <Slide slideKey={1}>
             <div className="flex h-full flex-col justify-between">
-                <motion.div
-                    initial={{ opacity: 0, y: 10 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 0.5, delay: 0.1 }}
-                    className="flex items-center gap-3"
-                >
-                    <div className="h-2 w-2 animate-pulse rounded-full bg-[color:var(--aot-primary)]" />
-                    <span className="font-mono text-[0.7rem] uppercase tracking-[0.3em] text-[color:var(--aot-text-muted)]">
-                        CVT · ACTON Technology
-                    </span>
-                </motion.div>
+                <div className="flex items-start justify-between gap-6">
+                    <motion.div
+                        initial={{ opacity: 0, y: 10 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        transition={{ duration: 0.5, delay: 0.1 }}
+                        className="flex items-center gap-3"
+                    >
+                        <div className="h-2 w-2 animate-pulse rounded-full bg-[color:var(--aot-primary)]" />
+                        <span className="font-mono text-[0.7rem] uppercase tracking-[0.3em] text-[color:var(--aot-text-muted)]">
+                            CVT · ACTON Technology
+                        </span>
+                    </motion.div>
+
+                    <motion.div
+                        initial={{ opacity: 0, y: -8 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        transition={{ duration: 0.5, delay: 0.15 }}
+                        className="shrink-0"
+                    >
+                        <Image
+                            src="/aot-academy-logo.png"
+                            alt="AOT Academy — Think. Act. Code."
+                            width={432}
+                            height={176}
+                            priority
+                            className="h-12 w-auto lg:h-14 xl:h-16"
+                        />
+                    </motion.div>
+                </div>
 
                 <div className="flex flex-col gap-8">
                     <motion.h1
