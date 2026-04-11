@@ -1,0 +1,172 @@
+@import "tailwindcss";
+
+/* ──────────────────────────────────────────────────────────────
+ * ACTON Blue — Palette & design tokens
+ * Deck CVT · Le développement agentique à AOT
+ * ────────────────────────────────────────────────────────────── */
+
+:root {
+    /* Backgrounds */
+    --aot-bg-base: #030712;
+    --aot-bg-surface: #0f172a;
+    --aot-bg-elevated: #172033;
+    --aot-bg-overlay: rgba(3, 7, 18, 0.85);
+
+    /* Borders */
+    --aot-border: #1e293b;
+    --aot-border-subtle: #15203a;
+    --aot-border-strong: #334155;
+
+    /* Text */
+    --aot-text: #f8fafc;
+    --aot-text-muted: #94a3b8;
+    --aot-text-dim: #64748b;
+
+    /* Accents */
+    --aot-primary: #3b82f6;
+    --aot-primary-hi: #60a5fa;
+    --aot-primary-lo: #1d4ed8;
+    --aot-accent: #14b8a6;
+    --aot-accent-hi: #2dd4bf;
+    --aot-success: #10b981;
+    --aot-warning: #f59e0b;
+    --aot-danger: #ef4444;
+
+    /* Gradients */
+    --aot-gradient-primary: linear-gradient(
+        135deg,
+        #3b82f6 0%,
+        #14b8a6 100%
+    );
+    --aot-gradient-hero: radial-gradient(
+            ellipse at top,
+            rgba(59, 130, 246, 0.15) 0%,
+            transparent 50%
+        ),
+        radial-gradient(
+            ellipse at bottom right,
+            rgba(20, 184, 166, 0.1) 0%,
+            transparent 50%
+        );
+
+    /* Shadows */
+    --aot-shadow-glow: 0 0 40px rgba(59, 130, 246, 0.25);
+    --aot-shadow-card: 0 4px 24px rgba(0, 0, 0, 0.4);
+    --aot-shadow-strong: 0 20px 60px rgba(0, 0, 0, 0.6);
+
+    /* Radius */
+    --aot-radius-sm: 8px;
+    --aot-radius-md: 12px;
+    --aot-radius-lg: 16px;
+    --aot-radius-xl: 24px;
+}
+
+@theme inline {
+    /* Colors mapped for tailwind utilities */
+    --color-background: var(--aot-bg-base);
+    --color-foreground: var(--aot-text);
+
+    --color-surface: var(--aot-bg-surface);
+    --color-elevated: var(--aot-bg-elevated);
+    --color-border: var(--aot-border);
+    --color-border-subtle: var(--aot-border-subtle);
+    --color-muted: var(--aot-text-muted);
+    --color-dim: var(--aot-text-dim);
+
+    --color-primary: var(--aot-primary);
+    --color-primary-hi: var(--aot-primary-hi);
+    --color-primary-lo: var(--aot-primary-lo);
+    --color-accent: var(--aot-accent);
+    --color-accent-hi: var(--aot-accent-hi);
+    --color-success: var(--aot-success);
+    --color-warning: var(--aot-warning);
+    --color-danger: var(--aot-danger);
+
+    /* Fonts */
+    --font-sans: var(--font-geist-sans);
+    --font-mono: var(--font-geist-mono);
+
+    /* Radius */
+    --radius-sm: var(--aot-radius-sm);
+    --radius-md: var(--aot-radius-md);
+    --radius-lg: var(--aot-radius-lg);
+    --radius-xl: var(--aot-radius-xl);
+}
+
+* {
+    border-color: var(--aot-border);
+}
+
+html,
+body {
+    background: var(--aot-bg-base);
+    color: var(--aot-text);
+    font-family: var(--font-sans), "Inter", system-ui, -apple-system, sans-serif;
+    font-feature-settings: "ss01", "cv11";
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    overflow: hidden;
+}
+
+body {
+    background-image: var(--aot-gradient-hero);
+    background-attachment: fixed;
+}
+
+/* Selection */
+::selection {
+    background: var(--aot-primary);
+    color: var(--aot-text);
+}
+
+/* Scrollbar (when needed) */
+::-webkit-scrollbar {
+    width: 10px;
+    height: 10px;
+}
+::-webkit-scrollbar-track {
+    background: var(--aot-bg-base);
+}
+::-webkit-scrollbar-thumb {
+    background: var(--aot-border-strong);
+    border-radius: 6px;
+}
+::-webkit-scrollbar-thumb:hover {
+    background: var(--aot-primary);
+}
+
+/* Utility classes for the deck */
+.aot-gradient-text {
+    background: var(--aot-gradient-primary);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+}
+
+.aot-glass {
+    background: rgba(15, 23, 42, 0.65);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border: 1px solid var(--aot-border);
+}
+
+.aot-glow {
+    box-shadow: var(--aot-shadow-glow);
+}
+
+/* Noise overlay for extra polish */
+.aot-noise::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    opacity: 0.03;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+}
+
+/* Focus */
+:focus-visible {
+    outline: 2px solid var(--aot-primary);
+    outline-offset: 2px;
+    border-radius: 4px;
+}
