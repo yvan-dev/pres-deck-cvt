@@ -1,7 +1,7 @@
 import type { ComponentType } from "react";
 
 import CoverSlide from "@/components/slides/01-cover";
-import AgendaSlide from "@/components/slides/02-agenda";
+import SummarySlide from "@/components/slides/02-summary";
 import { makePlaceholderSlide } from "@/components/slides/placeholder";
 
 export type PartId = 1 | 2 | 3 | 4 | 5 | 6 | 7;
@@ -35,7 +35,7 @@ export const PARTS: Record<PartId, string> = {
 export const SLIDES: SlideMeta[] = [
     // ── Partie 1 — Contexte (5)
     { id: 1, part: 1, partLabel: PARTS[1], title: "Le développement agentique à AOT", component: CoverSlide },
-    { id: 2, part: 1, partLabel: PARTS[1], title: "Agenda", component: AgendaSlide },
+    { id: 2, part: 1, partLabel: PARTS[1], title: "Sommaire", component: SummarySlide },
     { id: 3, part: 1, partLabel: PARTS[1], title: "Qui je suis", component: makePlaceholderSlide(3, 1, "Qui je suis") },
     { id: 4, part: 1, partLabel: PARTS[1], title: "Le constat — ce qui a changé en 18 mois", component: makePlaceholderSlide(4, 1, "Le constat — ce qui a changé en 18 mois") },
     { id: 5, part: 1, partLabel: PARTS[1], title: "Où en est AOT ? Où devrait-on être ?", component: makePlaceholderSlide(5, 1, "Où en est AOT ? Où devrait-on être ?") },

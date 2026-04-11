@@ -1,58 +1,66 @@
 @import "tailwindcss";
 
 /* ──────────────────────────────────────────────────────────────
- * ACTON Blue — Palette & design tokens
+ * ACTON GREEN — Palette officielle (extraite de AOT - Couleurs.pptx)
  * Deck CVT · Le développement agentique à AOT
+ *
+ * Main logo : #17E517 vert signature, #00FF00 vert vif
+ * Secondary : #34A836 medium · #1B581C dark · #0E300F very dark
+ * Neutrals  : #000000 black · #FFFFFF white
  * ────────────────────────────────────────────────────────────── */
 
 :root {
-    /* Backgrounds */
-    --aot-bg-base: #030712;
-    --aot-bg-surface: #0f172a;
-    --aot-bg-elevated: #172033;
-    --aot-bg-overlay: rgba(3, 7, 18, 0.85);
+    /* Backgrounds — noirs avec très légère teinte verte */
+    --aot-bg-base: #020402;
+    --aot-bg-surface: #070b07;
+    --aot-bg-elevated: #0e150e;
+    --aot-bg-overlay: rgba(0, 0, 0, 0.88);
 
-    /* Borders */
-    --aot-border: #1e293b;
-    --aot-border-subtle: #15203a;
-    --aot-border-strong: #334155;
+    /* Borders — dégradé du vert AOT secondaire */
+    --aot-border: #152a16;
+    --aot-border-subtle: #0e1b0f;
+    --aot-border-strong: #1b581c;
 
-    /* Text */
-    --aot-text: #f8fafc;
-    --aot-text-muted: #94a3b8;
-    --aot-text-dim: #64748b;
+    /* Text — blanc sur noir, muted = gris-vert */
+    --aot-text: #ffffff;
+    --aot-text-muted: #a3b5a3;
+    --aot-text-dim: #6b7e6b;
 
-    /* Accents */
-    --aot-primary: #3b82f6;
-    --aot-primary-hi: #60a5fa;
-    --aot-primary-lo: #1d4ed8;
-    --aot-accent: #14b8a6;
-    --aot-accent-hi: #2dd4bf;
-    --aot-success: #10b981;
+    /* Primary — le vert signature AOT */
+    --aot-primary: #17e517;
+    --aot-primary-hi: #00ff00;
+    --aot-primary-lo: #1b581c;
+
+    /* Accent — le vert medium de la palette secondaire */
+    --aot-accent: #34a836;
+    --aot-accent-hi: #52d654;
+
+    /* États */
+    --aot-success: #17e517;
     --aot-warning: #f59e0b;
     --aot-danger: #ef4444;
 
     /* Gradients */
     --aot-gradient-primary: linear-gradient(
         135deg,
-        #3b82f6 0%,
-        #14b8a6 100%
+        #17e517 0%,
+        #00ff00 100%
     );
     --aot-gradient-hero: radial-gradient(
             ellipse at top,
-            rgba(59, 130, 246, 0.15) 0%,
-            transparent 50%
+            rgba(23, 229, 23, 0.12) 0%,
+            transparent 55%
         ),
         radial-gradient(
             ellipse at bottom right,
-            rgba(20, 184, 166, 0.1) 0%,
-            transparent 50%
+            rgba(52, 168, 54, 0.08) 0%,
+            transparent 55%
         );
 
-    /* Shadows */
-    --aot-shadow-glow: 0 0 40px rgba(59, 130, 246, 0.25);
-    --aot-shadow-card: 0 4px 24px rgba(0, 0, 0, 0.4);
-    --aot-shadow-strong: 0 20px 60px rgba(0, 0, 0, 0.6);
+    /* Shadows — glow vert AOT signature */
+    --aot-shadow-glow: 0 0 40px rgba(23, 229, 23, 0.28);
+    --aot-shadow-card: 0 4px 24px rgba(0, 0, 0, 0.6);
+    --aot-shadow-strong: 0 20px 60px rgba(0, 0, 0, 0.8);
 
     /* Radius */
     --aot-radius-sm: 8px;
@@ -113,13 +121,13 @@ body {
     background-attachment: fixed;
 }
 
-/* Selection */
+/* Selection — contraste maximal vert sur noir */
 ::selection {
     background: var(--aot-primary);
-    color: var(--aot-text);
+    color: #000000;
 }
 
-/* Scrollbar (when needed) */
+/* Scrollbar */
 ::-webkit-scrollbar {
     width: 10px;
     height: 10px;
@@ -135,7 +143,7 @@ body {
     background: var(--aot-primary);
 }
 
-/* Utility classes for the deck */
+/* Utility classes */
 .aot-gradient-text {
     background: var(--aot-gradient-primary);
     -webkit-background-clip: text;
@@ -144,7 +152,7 @@ body {
 }
 
 .aot-glass {
-    background: rgba(15, 23, 42, 0.65);
+    background: rgba(7, 11, 7, 0.72);
     backdrop-filter: blur(16px);
     -webkit-backdrop-filter: blur(16px);
     border: 1px solid var(--aot-border);
@@ -154,7 +162,6 @@ body {
     box-shadow: var(--aot-shadow-glow);
 }
 
-/* Noise overlay for extra polish */
 .aot-noise::before {
     content: "";
     position: absolute;
@@ -164,7 +171,7 @@ body {
     background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
 }
 
-/* Focus */
+/* Focus — vert signature */
 :focus-visible {
     outline: 2px solid var(--aot-primary);
     outline-offset: 2px;

@@ -33,7 +33,7 @@ const CoverSlide = () => {
                         Le développement
                         <br />
                         <span className="aot-gradient-text">agentique</span> à{" "}
-                        <span className="font-mono text-[color:var(--aot-accent-hi)]">
+                        <span className="font-mono text-[color:var(--aot-text)]">
                             AOT
                         </span>
                         <span className="text-[color:var(--aot-primary)]">
@@ -74,7 +74,7 @@ const CoverSlide = () => {
                             Yvan Gunewou
                         </span>
                         <span className="font-mono text-xs text-[color:var(--aot-text-muted)]">
-                            Tech Lead · D2R2
+                            Tech Lead
                         </span>
                     </div>
                     <div className="hidden flex-col items-end gap-1 sm:flex">
