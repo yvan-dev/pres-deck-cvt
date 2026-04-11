@@ -2,6 +2,19 @@ import type { ComponentType } from "react";
 
 import CoverSlide from "@/components/slides/01-cover";
 import SummarySlide from "@/components/slides/02-summary";
+import WhoAmISlide from "@/components/slides/03-who-am-i";
+import ContextSlide from "@/components/slides/04-context";
+import WhereWeAreSlide from "@/components/slides/05-where-we-are";
+import OverviewSlide from "@/components/slides/06-overview";
+import N1ChatSlide from "@/components/slides/07-n1-chat";
+import N2CopilotSlide from "@/components/slides/08-n2-copilot";
+import N3AgentSlide from "@/components/slides/09-n3-agent";
+import N3ToolsSlide from "@/components/slides/10-n3-tools";
+import N3PracticesSlide from "@/components/slides/11-n3-practices";
+import N4HitlSlide from "@/components/slides/12-n4-hitl";
+import N4ZoomSlide from "@/components/slides/13-n4-zoom";
+import N5SwarmSlide from "@/components/slides/14-n5-swarm";
+import PositioningSlide from "@/components/slides/15-positioning";
 import { makePlaceholderSlide } from "@/components/slides/placeholder";
 
 export type PartId = 1 | 2 | 3 | 4 | 5 | 6 | 7;
@@ -36,21 +49,21 @@ export const SLIDES: SlideMeta[] = [
     // ── Partie 1 — Contexte (5)
     { id: 1, part: 1, partLabel: PARTS[1], title: "Le développement agentique à AOT", component: CoverSlide },
     { id: 2, part: 1, partLabel: PARTS[1], title: "Sommaire", component: SummarySlide },
-    { id: 3, part: 1, partLabel: PARTS[1], title: "Qui je suis", component: makePlaceholderSlide(3, 1, "Qui je suis") },
-    { id: 4, part: 1, partLabel: PARTS[1], title: "Le constat — ce qui a changé en 18 mois", component: makePlaceholderSlide(4, 1, "Le constat — ce qui a changé en 18 mois") },
-    { id: 5, part: 1, partLabel: PARTS[1], title: "Où en est AOT ? Où devrait-on être ?", component: makePlaceholderSlide(5, 1, "Où en est AOT ? Où devrait-on être ?") },
+    { id: 3, part: 1, partLabel: PARTS[1], title: "Qui je suis", component: WhoAmISlide },
+    { id: 4, part: 1, partLabel: PARTS[1], title: "Le constat — ce qui a changé en 18 mois", component: ContextSlide },
+    { id: 5, part: 1, partLabel: PARTS[1], title: "Où en est AOT ? Où devrait-on être ?", component: WhereWeAreSlide },
 
     // ── Partie 2 — Maturité (10)
-    { id: 6, part: 2, partLabel: PARTS[2], title: "Vue d'ensemble — 5 niveaux de maturité", component: makePlaceholderSlide(6, 2, "Vue d'ensemble — 5 niveaux de maturité") },
-    { id: 7, part: 2, partLabel: PARTS[2], title: "N1 — Chat", component: makePlaceholderSlide(7, 2, "N1 — Chat") },
-    { id: 8, part: 2, partLabel: PARTS[2], title: "N2 — Copilote", component: makePlaceholderSlide(8, 2, "N2 — Copilote") },
-    { id: 9, part: 2, partLabel: PARTS[2], title: "N3 — Agent guidé ⭐", component: makePlaceholderSlide(9, 2, "N3 — Agent guidé (cible court terme)") },
-    { id: 10, part: 2, partLabel: PARTS[2], title: "Zoom N3 : les outils", component: makePlaceholderSlide(10, 2, "Zoom N3 : les outils") },
-    { id: 11, part: 2, partLabel: PARTS[2], title: "Zoom N3 : les pratiques", component: makePlaceholderSlide(11, 2, "Zoom N3 : les pratiques") },
-    { id: 12, part: 2, partLabel: PARTS[2], title: "N4 — Human in the Loop", component: makePlaceholderSlide(12, 2, "N4 — Human in the Loop") },
-    { id: 13, part: 2, partLabel: PARTS[2], title: "Zoom N4 : BMAD + LangGraph", component: makePlaceholderSlide(13, 2, "Zoom N4 : BMAD + LangGraph") },
-    { id: 14, part: 2, partLabel: PARTS[2], title: "N5 — Swarm", component: makePlaceholderSlide(14, 2, "N5 — Swarm") },
-    { id: 15, part: 2, partLabel: PARTS[2], title: "Positionnement — Marché / EDF / AOT / Cibles", component: makePlaceholderSlide(15, 2, "Positionnement — Marché / EDF / AOT / Cibles") },
+    { id: 6, part: 2, partLabel: PARTS[2], title: "Vue d'ensemble — 5 niveaux de maturité", component: OverviewSlide },
+    { id: 7, part: 2, partLabel: PARTS[2], title: "N1 — Chat", component: N1ChatSlide },
+    { id: 8, part: 2, partLabel: PARTS[2], title: "N2 — Copilote", component: N2CopilotSlide },
+    { id: 9, part: 2, partLabel: PARTS[2], title: "N3 — Agent guidé ⭐", component: N3AgentSlide },
+    { id: 10, part: 2, partLabel: PARTS[2], title: "Zoom N3 : les outils", component: N3ToolsSlide },
+    { id: 11, part: 2, partLabel: PARTS[2], title: "Zoom N3 : les pratiques", component: N3PracticesSlide },
+    { id: 12, part: 2, partLabel: PARTS[2], title: "N4 — Human in the Loop", component: N4HitlSlide },
+    { id: 13, part: 2, partLabel: PARTS[2], title: "Zoom N4 : BMAD + LangGraph", component: N4ZoomSlide },
+    { id: 14, part: 2, partLabel: PARTS[2], title: "N5 — Swarm", component: N5SwarmSlide },
+    { id: 15, part: 2, partLabel: PARTS[2], title: "Positionnement — Marché / EDF / AOT / Cibles", component: PositioningSlide },
 
     // ── Partie 3 — D2R2 (8)
     { id: 16, part: 3, partLabel: PARTS[3], title: "D2R2 en 1 slide", component: makePlaceholderSlide(16, 3, "D2R2 en 1 slide") },
