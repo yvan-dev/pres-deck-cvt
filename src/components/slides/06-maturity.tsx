@@ -12,10 +12,8 @@ const MaturitySlide = () => {
                     <h2 className="font-display mt-4 text-6xl font-semibold tracking-[-0.06em] text-[color:var(--aot-text)]">
                         Les 5 niveaux de maturité IA
                     </h2>
-                    <p className="mt-5 max-w-3xl text-lg leading-relaxed text-[color:var(--aot-text-muted)]">
-                        Cette échelle ne sert pas à impressionner. Elle sert à
-                        distinguer clairement l&apos;assistance, l&apos;exécution supervisée
-                        et l&apos;orchestration gouvernée.
+                    <p className="mt-5 text-xl text-[color:var(--aot-text-muted)]">
+                        5 niveaux. 2 vrais sauts. 1 trajectoire utile pour AOT.
                     </p>
                 </div>
 

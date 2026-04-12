@@ -1,113 +1,107 @@
 "use client";
 
 import { motion } from "framer-motion";
+import { BriefcaseBusiness, Gauge, Scale, Wrench } from "lucide-react";
 import { Slide } from "@/components/deck/Slide";
 import { IndustrialPanel } from "@/components/shared/IndustrialPanel";
 
-const cards = [
-    {
-        eyebrow: "Terrain",
-        title: "Je parle depuis la delivery, pas depuis la veille.",
-        detail:
-            "Le point de départ n'est pas une étude abstraite. C'est un workflow projet qui tourne déjà, avec ses coûts, ses frictions et ses bénéfices.",
-    },
-    {
-        eyebrow: "Posture",
-        title: "Ni évangéliste naïf, ni gardien du status quo.",
-        detail:
-            "L'enjeu est de tirer de la vitesse sans perdre la discipline d'ingénierie, le contrôle et la capacité de revue.",
-    },
-    {
-        eyebrow: "Intention",
-        title: "Donner à AOT un langage commun pour décider.",
-        detail:
-            "Le but de ce deck est d'outiller une décision collective, pas de démontrer que l'IA est impressionnante.",
-    },
+const evidence = [
+    { value: "~70", label: "beads", tone: "accent" as const },
+    { value: "~40", label: "PR estimées", tone: "neutral" as const },
+    { value: "N3", label: "déjà pratiqué", tone: "primary" as const },
 ];
 
-const evidence = [
-    { value: "~70", label: "beads visibles sur la période" },
-    { value: "~40", label: "PR estimées via workflow agentique" },
-    { value: "N3", label: "niveau déjà pratiqué sur D2R2" },
+const stance = [
+    {
+        icon: BriefcaseBusiness,
+        title: "Terrain réel",
+        detail: "delivery avant théorie",
+    },
+    {
+        icon: Gauge,
+        title: "Lecture orientée résultat",
+        detail: "vitesse, qualité, contrôle",
+    },
+    {
+        icon: Scale,
+        title: "Posture équilibrée",
+        detail: "ni hype ni rejet",
+    },
+    {
+        icon: Wrench,
+        title: "But",
+        detail: "outiller une décision",
+    },
 ];
 
 const WhoAmISlide = () => {
     return (
         <Slide slideKey={3} slideNumber={3} eyebrow="Partie 1 · Contexte">
-            <div className="grid h-full grid-cols-[0.95fr_1.05fr] gap-8">
+            <div className="grid h-full grid-cols-[0.92fr_1.08fr] gap-8">
                 <div className="flex flex-col justify-between">
                     <div>
                         <div className="industrial-kicker">Qui je suis</div>
                         <h2 className="font-display mt-4 text-6xl font-semibold tracking-[-0.06em] text-[color:var(--aot-text)]">
-                            Je porte ce sujet depuis le terrain.
+                            Je parle depuis la delivery.
                         </h2>
-                        <p className="mt-6 max-w-xl text-lg leading-relaxed text-[color:var(--aot-text-muted)]">
-                            Tech Lead sur D2R2, j&apos;ai utilisé les agents pour
-                            produire, relire, cadrer et accélérer le delivery. Ce
-                            retour d&apos;expérience m&apos;intéresse moins comme démo que
-                            comme base d&apos;industrialisation.
+                        <p className="mt-5 max-w-xl text-xl leading-relaxed text-[color:var(--aot-text-muted)]">
+                            Tech Lead D2R2. Workflow agentique déjà pratiqué. Regard orienté exécution.
                         </p>
                     </div>
 
-                    <IndustrialPanel eyebrow="Ce que tu peux attendre de cette présentation" title="Une lecture praticable" tone="primary">
-                        <ul className="space-y-3 text-sm leading-relaxed text-[color:var(--aot-text-muted)]">
-                            <li>Des catégories simples pour éviter les débats flous.</li>
-                            <li>Des signaux concrets issus d&apos;un projet réel.</li>
-                            <li>Une proposition d&apos;atterrissage organisationnel pour AOT.</li>
-                        </ul>
+                    <IndustrialPanel eyebrow="Intention" title="Donner à AOT un langage commun" tone="primary">
+                        <div className="text-lg font-medium text-[color:var(--aot-text)]">
+                            Pas une démo de plus. Un cadre pour décider.
+                        </div>
                     </IndustrialPanel>
                 </div>
 
-                <div className="grid grid-rows-[auto_auto_1fr] gap-5">
+                <div className="grid grid-rows-[auto_1fr] gap-5">
                     <motion.div
                         initial={{ opacity: 0, y: 10 }}
                         animate={{ opacity: 1, y: 0 }}
                         transition={{ duration: 0.35 }}
                         className="grid grid-cols-3 gap-4"
                     >
-                        {evidence.map((item, index) => (
+                        {evidence.map((item) => (
                             <IndustrialPanel
                                 key={item.label}
-                                eyebrow={index === 2 ? "Niveau" : "Preuve"}
+                                eyebrow="Signal"
                                 title={item.value}
-                                tone={index === 2 ? "primary" : "neutral"}
+                                tone={item.tone}
                                 className="justify-between"
                             >
-                                <p className="text-sm leading-relaxed text-[color:var(--aot-text-muted)]">
+                                <div className="text-sm text-[color:var(--aot-text-muted)]">
                                     {item.label}
-                                </p>
+                                </div>
                             </IndustrialPanel>
                         ))}
                     </motion.div>
 
-                    <IndustrialPanel eyebrow="Rôle" title="Pourquoi je porte ce deck" tone="accent">
-                        <p className="text-sm leading-relaxed text-[color:var(--aot-text-muted)]">
-                            Parce que le plus grand risque n&apos;est pas de rater une
-                            démo. C&apos;est de rester durablement au niveau 2 alors que
-                            le marché, les clients et les équipes les plus offensives
-                            commencent à structurer le niveau 3.
-                        </p>
-                    </IndustrialPanel>
+                    <div className="grid grid-cols-2 gap-4">
+                        {stance.map((item, index) => {
+                            const Icon = item.icon;
 
-                    <div className="grid grid-cols-3 gap-4">
-                        {cards.map((card, index) => (
-                            <motion.div
-                                key={card.eyebrow}
-                                initial={{ opacity: 0, y: 14 }}
-                                animate={{ opacity: 1, y: 0 }}
-                                transition={{ duration: 0.35, delay: 0.04 * index }}
-                            >
-                                <IndustrialPanel
-                                    eyebrow={card.eyebrow}
-                                    title={card.title}
-                                    className="h-full"
+                            return (
+                                <motion.div
+                                    key={item.title}
+                                    initial={{ opacity: 0, y: 12 }}
+                                    animate={{ opacity: 1, y: 0 }}
+                                    transition={{ duration: 0.3, delay: index * 0.04 }}
                                 >
-                                    <p className="text-sm leading-relaxed text-[color:var(--aot-text-muted)]">
-                                        {card.detail}
-                                    </p>
-                                </IndustrialPanel>
-                            </motion.div>
-                        ))}
+                                    <IndustrialPanel title={item.title} className="h-full justify-between">
+                                        <div className="flex items-center justify-between gap-4">
+                                            <div className="text-sm font-medium text-[color:var(--aot-text-muted)]">
+                                                {item.detail}
+                                            </div>
+                                            <div className="rounded-2xl border border-[rgba(255,255,255,0.08)] bg-[rgba(255,255,255,0.02)] p-3 text-[color:var(--aot-text-muted)]">
+                                                <Icon size={18} />
+                                            </div>
+                                        </div>
+                                    </IndustrialPanel>
+                                </motion.div>
+                            );
+                        })}
                     </div>
                 </div>
             </div>

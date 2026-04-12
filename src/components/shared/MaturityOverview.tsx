@@ -4,27 +4,26 @@ import { IndustrialPanel } from "./IndustrialPanel";
 
 export const MaturityOverview = () => (
     <div className="grid h-full grid-rows-[auto_1fr_auto] gap-6">
-        <div className="grid grid-cols-[1.1fr_0.9fr] gap-6">
-            <IndustrialPanel eyebrow="Lecture rapide" title="Une échelle, deux vrais sauts" tone="primary">
-                <p className="text-sm leading-relaxed text-[color:var(--aot-text-muted)]">
-                    Le vrai changement n&apos;est pas entre N1 et N2. Il se situe au
-                    passage vers l&apos;agent guidé, puis vers le workflow orchestré.
-                </p>
+        <div className="grid grid-cols-[1fr_1fr] gap-6">
+            <IndustrialPanel eyebrow="Lecture rapide" title="Le vrai saut est N2 → N3" tone="primary">
+                <div className="text-base font-medium text-[color:var(--aot-text)]">
+                    On passe de l&apos;assistance locale à l&apos;exécution supervisée.
+                </div>
             </IndustrialPanel>
 
-            <IndustrialPanel eyebrow="Décision" title="Ce que vise ce deck" tone="signal">
-                <div className="grid grid-cols-2 gap-4">
+            <IndustrialPanel eyebrow="Décision" title="Ce deck vise N3 puis N4" tone="signal">
+                <div className="grid grid-cols-2 gap-4 text-sm">
                     <div>
-                        <div className="industrial-kicker">Court terme</div>
-                        <p className="mt-2 text-sm text-[color:var(--aot-text)]">
-                            Installer N3 comme standard d&apos;équipe.
-                        </p>
+                        <div className="industrial-kicker">12 mois</div>
+                        <div className="mt-2 font-medium text-[color:var(--aot-text)]">
+                            N3 standard
+                        </div>
                     </div>
                     <div>
-                        <div className="industrial-kicker">Moyen terme</div>
-                        <p className="mt-2 text-sm text-[color:var(--aot-text)]">
-                            Structurer N4 sur les workflows à fort levier.
-                        </p>
+                        <div className="industrial-kicker">24 mois</div>
+                        <div className="mt-2 font-medium text-[color:var(--aot-text)]">
+                            N4 ciblé
+                        </div>
                     </div>
                 </div>
             </IndustrialPanel>
@@ -53,25 +52,22 @@ export const MaturityOverview = () => (
         </div>
 
         <div className="grid grid-cols-3 gap-4">
-            <IndustrialPanel eyebrow="N2" title="Assistance locale">
-                <p className="text-sm leading-relaxed text-[color:var(--aot-text-muted)]">
-                    Gains réels mais limités: le développeur reste chef
-                    d&apos;orchestre sur chaque micro-étape.
-                </p>
+            <IndustrialPanel eyebrow="N2" title="Assistance">
+                <div className="text-sm font-medium text-[color:var(--aot-text)]">
+                    Le dev pilote tout.
+                </div>
             </IndustrialPanel>
 
-            <IndustrialPanel eyebrow="N3" title="Exécution supervisée" tone="primary">
-                <p className="text-sm leading-relaxed text-[color:var(--aot-text-muted)]">
-                    Le prompt devient une délégation de travail avec plan,
-                    implémentation, test et contrôle humain.
-                </p>
+            <IndustrialPanel eyebrow="N3" title="Délégation" tone="primary">
+                <div className="text-sm font-medium text-[color:var(--aot-text)]">
+                    L&apos;agent exécute sous contrôle humain.
+                </div>
             </IndustrialPanel>
 
-            <IndustrialPanel eyebrow="N4" title="Automation gouvernée" tone="signal">
-                <p className="text-sm leading-relaxed text-[color:var(--aot-text-muted)]">
-                    Le levier supplémentaire vient des gates, de l&apos;observabilité
-                    et de la composition de rôles agents.
-                </p>
+            <IndustrialPanel eyebrow="N4" title="Orchestration" tone="signal">
+                <div className="text-sm font-medium text-[color:var(--aot-text)]">
+                    Les gates deviennent le levier.
+                </div>
             </IndustrialPanel>
         </div>
     </div>
