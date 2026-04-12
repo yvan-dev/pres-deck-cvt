@@ -288,16 +288,21 @@ body::after {
 .liquid-dock::before {
     content: "";
     position: absolute;
-    left: 2.5%;
-    right: 2.5%;
-    top: 0;
-    height: 48%;
+    left: 2.2%;
+    right: 2.2%;
+    top: 1px;
+    height: 62%;
     border-radius: 999px;
     background: linear-gradient(
         180deg,
-        rgba(255, 255, 255, 0.18),
-        rgba(255, 255, 255, 0)
+        rgba(255, 255, 255, 0.18) 0%,
+        rgba(255, 255, 255, 0.1) 18%,
+        rgba(255, 255, 255, 0.035) 42%,
+        rgba(255, 255, 255, 0.01) 64%,
+        rgba(255, 255, 255, 0) 100%
     );
+    filter: blur(10px);
+    opacity: 0.82;
     pointer-events: none;
 }
 
