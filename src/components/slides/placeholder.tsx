@@ -1,11 +1,7 @@
 import { Slide } from "@/components/deck/Slide";
+import { IndustrialPanel } from "@/components/shared/IndustrialPanel";
 import { PARTS, type PartId } from "@/lib/slides.config";
 
-/**
- * Factory : retourne un composant Slide placeholder avec son titre et numéro.
- * Les placeholders matérialisent les slides à écrire, tout en maintenant
- * la navigation complète dès la Phase 1.
- */
 export const makePlaceholderSlide = (
     id: number,
     part: PartId,
@@ -18,25 +14,45 @@ export const makePlaceholderSlide = (
                 slideNumber={id}
                 eyebrow={`Partie ${part} · ${PARTS[part]}`}
             >
-                <div className="flex flex-1 flex-col items-start justify-center gap-6">
-                    <div className="inline-flex items-center gap-2 rounded-full border border-[color:var(--aot-border)] bg-[color:var(--aot-bg-surface)]/60 px-4 py-1.5">
-                        <span className="h-1.5 w-1.5 rounded-full bg-[color:var(--aot-warning)]" />
-                        <span className="font-mono text-[0.65rem] uppercase tracking-[0.2em] text-[color:var(--aot-text-dim)]">
-                            Slide à écrire
-                        </span>
+                <div className="grid h-full grid-cols-[1.1fr_0.9fr] gap-8">
+                    <div className="flex flex-col justify-between">
+                        <div className="flex flex-wrap gap-3">
+                            <span className="industrial-chip" data-tone="signal">
+                                Slide à écrire
+                            </span>
+                            <span className="industrial-chip">Phase {part <= 2 ? "03" : part <= 4 ? "04" : "05"}</span>
+                        </div>
+
+                        <div className="max-w-4xl">
+                            <div className="industrial-kicker">Backlog narratif</div>
+                            <h1 className="font-display mt-4 text-6xl font-semibold leading-[0.98] tracking-[-0.06em] text-[color:var(--aot-text)]">
+                                {title}
+                            </h1>
+                            <p className="mt-6 max-w-2xl text-lg leading-relaxed text-[color:var(--aot-text-muted)]">
+                                Cette slide n&apos;est plus un écran vide. Elle garde la
+                                continuité du design, explicite son statut et préserve la
+                                lisibilité du deck pendant la construction.
+                            </p>
+                        </div>
+
+                        <div className="industrial-kicker">
+                            src/components/slides/slide_{String(id).padStart(2, "0")}.tsx
+                        </div>
                     </div>
-                    <h1 className="max-w-5xl text-5xl font-semibold leading-[1.1] tracking-tight text-[color:var(--aot-text)] lg:text-6xl">
-                        {title}
-                    </h1>
-                    <p className="font-mono text-sm text-[color:var(--aot-text-muted)]">
-                        {`slide_${String(id).padStart(2, "0")}.tsx — à implémenter en Phase ${
-                            part <= 2 ? "3" : part <= 4 ? "4" : "5"
-                        }`}
-                    </p>
+
+                    <IndustrialPanel eyebrow="Implémentation" title="Ce qu'il reste à produire">
+                        <ul className="space-y-3 text-sm leading-relaxed text-[color:var(--aot-text-muted)]">
+                            <li>Concevoir le message unique de la slide.</li>
+                            <li>Choisir le bon gabarit visuel.</li>
+                            <li>Ajouter une preuve visuelle ou métrique.</li>
+                            <li>Relier la slide à la décision attendue.</li>
+                        </ul>
+                    </IndustrialPanel>
                 </div>
             </Slide>
         );
     };
+
     PlaceholderSlide.displayName = `PlaceholderSlide${id}`;
     return PlaceholderSlide;
 };

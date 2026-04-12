@@ -2,106 +2,126 @@
 
 import { motion } from "framer-motion";
 import { Slide } from "@/components/deck/Slide";
+import { IndustrialPanel } from "@/components/shared/IndustrialPanel";
 
 type SummaryItem = {
     part: number;
     title: string;
     detail: string;
-    highlight?: boolean;
+    decision: string;
+    tone?: "neutral" | "primary" | "accent" | "signal";
 };
 
 const SUMMARY: SummaryItem[] = [
     {
         part: 1,
         title: "Contexte & cadrage",
-        detail: "Pourquoi ce CVT, où en est le marché",
+        detail: "Pourquoi le sujet a changé de nature et pourquoi AOT doit se positionner.",
+        decision: "Nommer l'enjeu.",
     },
     {
         part: 2,
         title: "Les 5 niveaux de maturité IA",
-        detail: "Chat → Copilote → Agent guidé → HITL → Swarm",
-        highlight: true,
+        detail: "Une grille pour distinguer assistance, exécution supervisée et orchestration.",
+        decision: "Choisir la vraie cible.",
+        tone: "primary",
     },
     {
         part: 3,
-        title: "Preuve par l'exemple — D2R2",
-        detail: "Workflow réel, beads, Claude Code, métriques",
+        title: "Preuve par l'exemple · D2R2",
+        detail: "Un workflow concret, déjà pratiqué, avec ses gains et ses limites.",
+        decision: "Valider la crédibilité.",
+        tone: "accent",
     },
     {
         part: 4,
-        title: "Aller plus loin — BMAD + LangGraph",
-        detail: "Validation gates, orchestration multi-agents",
+        title: "Aller plus loin · BMAD + LangGraph",
+        detail: "Comment passer d'un agent guidé à des workflows gouvernés.",
+        decision: "Préparer N4.",
+        tone: "signal",
     },
     {
         part: 5,
         title: "Le pôle IA AOT",
-        detail: "Mission, piliers, roadmap, KPIs",
+        detail: "Mission, périmètre, gouvernance, roadmap et KPIs.",
+        decision: "Structurer l'exécution.",
     },
     {
         part: 6,
         title: "Démo live",
-        detail: "Claude Code sur une tâche D2R2 réelle",
-        highlight: true,
+        detail: "Montrer le niveau de délégation réellement atteignable aujourd'hui.",
+        decision: "Rendre tangible.",
+        tone: "primary",
     },
     {
         part: 7,
-        title: "Clôture & Q&A",
-        detail: "Prochaines étapes et appel à action",
+        title: "Clôture & call to action",
+        detail: "Décisions, prochaines étapes, contribution attendue.",
+        decision: "Faire atterrir.",
     },
 ];
 
 const SummarySlide = () => {
     return (
-        <Slide
-            slideKey={2}
-            slideNumber={2}
-            eyebrow="Partie 1 · Contexte"
-        >
-            <div className="flex h-full flex-col gap-10">
-                <motion.div
-                    initial={{ opacity: 0, y: 10 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 0.4 }}
-                    className="flex flex-col gap-2"
-                >
-                    <span className="font-mono text-xs uppercase tracking-[0.25em] text-[color:var(--aot-text-dim)]">
-                        Au programme
-                    </span>
-                    <h2 className="text-5xl font-semibold tracking-tight text-[color:var(--aot-text)] lg:text-6xl">
-                        Sommaire
-                    </h2>
-                </motion.div>
+        <Slide slideKey={2} slideNumber={2} eyebrow="Partie 1 · Contexte">
+            <div className="grid h-full grid-cols-[0.9fr_1.1fr] gap-8">
+                <div className="flex flex-col justify-between">
+                    <div>
+                        <div className="industrial-kicker">Plan de vol</div>
+                        <h2 className="font-display mt-4 text-6xl font-semibold tracking-[-0.06em] text-[color:var(--aot-text)]">
+                            Sommaire
+                        </h2>
+                        <p className="mt-6 max-w-xl text-lg leading-relaxed text-[color:var(--aot-text-muted)]">
+                            Le deck suit une logique simple: nommer le terrain,
+                            montrer la cible, prouver que le passage est déjà amorcé,
+                            puis proposer un cadre d&apos;industrialisation.
+                        </p>
+                    </div>
 
-                <div className="grid flex-1 grid-cols-1 gap-3 lg:grid-cols-2">
-                    {SUMMARY.map((item, i) => (
+                    <div className="grid gap-4">
+                        <IndustrialPanel eyebrow="Fil rouge" title="Du buzz à la capacité" tone="primary">
+                            <p className="text-sm leading-relaxed text-[color:var(--aot-text-muted)]">
+                                Le sujet n&apos;est pas “faut-il utiliser l&apos;IA ?”
+                                mais “quel niveau de délégation et de gouvernance
+                                voulons-nous institutionnaliser ?”.
+                            </p>
+                        </IndustrialPanel>
+
+                        <IndustrialPanel eyebrow="Sortie attendue" title="Trois décisions de fin" tone="signal">
+                            <ul className="space-y-2 text-sm leading-relaxed text-[color:var(--aot-text-muted)]">
+                                <li>Choisir N3 comme standard court terme.</li>
+                                <li>Identifier les flux candidats à N4.</li>
+                                <li>Nommer la structure qui porte l&apos;exécution.</li>
+                            </ul>
+                        </IndustrialPanel>
+                    </div>
+                </div>
+
+                <div className="grid grid-cols-2 gap-4">
+                    {SUMMARY.map((item, index) => (
                         <motion.div
                             key={item.part}
-                            initial={{ opacity: 0, x: -10 }}
-                            animate={{ opacity: 1, x: 0 }}
-                            transition={{ duration: 0.4, delay: 0.05 * i }}
-                            className={`group flex items-start gap-5 rounded-xl border p-5 transition-all ${
-                                item.highlight
-                                    ? "border-[color:var(--aot-primary)]/40 bg-[color:var(--aot-primary)]/5"
-                                    : "border-[color:var(--aot-border)] bg-[color:var(--aot-bg-surface)]/40"
-                            }`}
+                            initial={{ opacity: 0, y: 12 }}
+                            animate={{ opacity: 1, y: 0 }}
+                            transition={{ duration: 0.35, delay: index * 0.04 }}
+                            className="h-full"
                         >
-                            <div
-                                className={`flex h-12 w-12 shrink-0 items-center justify-center rounded-lg font-mono text-lg font-bold ${
-                                    item.highlight
-                                        ? "bg-[color:var(--aot-primary)] text-white"
-                                        : "bg-[color:var(--aot-bg-elevated)] text-[color:var(--aot-text-muted)]"
-                                }`}
+                            <IndustrialPanel
+                                eyebrow={`Partie ${item.part}`}
+                                title={item.title}
+                                tone={item.tone ?? "neutral"}
+                                className="h-full min-h-[10.2rem] justify-between"
                             >
-                                {String(item.part).padStart(2, "0")}
-                            </div>
-                            <div className="flex flex-1 flex-col gap-1">
-                                <h3 className="text-lg font-semibold text-[color:var(--aot-text)]">
-                                    {item.title}
-                                </h3>
-                                <p className="text-sm text-[color:var(--aot-text-muted)]">
+                                <p className="text-sm leading-relaxed text-[color:var(--aot-text-muted)]">
                                     {item.detail}
                                 </p>
-                            </div>
+                                <div className="rounded-2xl border border-[rgba(255,255,255,0.08)] bg-[rgba(255,255,255,0.025)] px-4 py-3">
+                                    <div className="industrial-kicker">But</div>
+                                    <div className="mt-1 text-sm font-medium text-[color:var(--aot-text)]">
+                                        {item.decision}
+                                    </div>
+                                </div>
+                            </IndustrialPanel>
                         </motion.div>
                     ))}
                 </div>
