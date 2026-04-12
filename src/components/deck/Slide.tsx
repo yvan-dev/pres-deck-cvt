@@ -7,21 +7,29 @@ import { cn } from "@/lib/utils";
 type SlideProps = {
     children: ReactNode;
     className?: string;
-    /** Identifier used for animation key (defaults to random) */
+    contentClassName?: string;
     slideKey?: string | number;
-    /** Eyebrow label shown top-left (ex: "Partie 2 · Maturité") */
     eyebrow?: string;
-    /** Slide number shown top-right */
     slideNumber?: number;
 };
 
-/**
- * Frame 16:9 avec transition fade + padding cohérent.
- * L'enfant est placé dans un conteneur qui respecte le ratio quelle que soit la taille écran.
- */
+const Corner = ({
+    className,
+}: {
+    className: string;
+}) => (
+    <div
+        className={cn(
+            "absolute z-[1] h-6 w-6 border-[color:var(--aot-border-strong)]/60",
+            className
+        )}
+    />
+);
+
 export const Slide = ({
     children,
     className,
+    contentClassName,
     slideKey,
     eyebrow,
     slideNumber,
@@ -29,33 +37,44 @@ export const Slide = ({
     return (
         <motion.div
             key={slideKey}
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
-            transition={{ duration: 0.25, ease: "easeOut" }}
+            initial={{ opacity: 0, y: 10 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: -8 }}
+            transition={{ duration: 0.28, ease: "easeOut" }}
             className={cn(
-                "relative h-full w-full overflow-hidden",
-                "flex flex-col",
+                "industrial-shell industrial-grid relative flex h-full w-full flex-col overflow-hidden",
                 className
             )}
         >
+            <Corner className="left-[2.2%] top-[2.3%] border-l border-t" />
+            <Corner className="right-[2.2%] top-[2.3%] border-r border-t" />
+            <Corner className="bottom-[4.4%] left-[2.2%] border-b border-l" />
+            <Corner className="bottom-[4.4%] right-[2.2%] border-b border-r" />
+
             {(eyebrow || slideNumber !== undefined) && (
-                <div className="absolute left-0 right-0 top-0 z-10 flex items-center justify-between px-[4%] pt-[3%]">
+                <div className="absolute left-0 right-0 top-0 z-10 flex items-center justify-between px-[4.6%] pt-[3.1%]">
                     {eyebrow ? (
-                        <span className="font-mono text-[0.65rem] uppercase tracking-[0.25em] text-[color:var(--aot-text-dim)]">
-                            {eyebrow}
-                        </span>
+                        <div className="flex items-center gap-3">
+                            <span className="industrial-dot" />
+                            <span className="industrial-kicker">{eyebrow}</span>
+                        </div>
                     ) : (
                         <span />
                     )}
-                    {slideNumber !== undefined && (
-                        <span className="font-mono text-[0.65rem] text-[color:var(--aot-text-dim)]">
-                            {String(slideNumber).padStart(2, "0")}
-                        </span>
-                    )}
+                    {slideNumber !== undefined ? (
+                        <div className="industrial-chip">
+                            Slide {String(slideNumber).padStart(2, "0")}
+                        </div>
+                    ) : null}
                 </div>
             )}
-            <div className="flex flex-1 flex-col justify-center px-[6%] py-[5%]">
+
+            <div
+                className={cn(
+                    "relative z-[2] flex flex-1 flex-col justify-center px-[5.4%] pb-[7.2%] pt-[8.1%]",
+                    contentClassName
+                )}
+            >
                 {children}
             </div>
         </motion.div>

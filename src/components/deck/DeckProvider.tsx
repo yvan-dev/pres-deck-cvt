@@ -4,11 +4,15 @@ import {
     createContext,
     useCallback,
     useContext,
-    useEffect,
     useMemo,
     useState,
     type ReactNode,
 } from "react";
+import {
+    usePathname,
+    useRouter,
+    useSearchParams,
+} from "next/navigation";
 
 type DeckContextValue = {
     current: number;
@@ -32,59 +36,65 @@ type DeckProviderProps = {
     children: ReactNode;
 };
 
-/**
- * Fournit l'état du deck (slide courant, modes overview/black)
- * et synchronise l'URL via ?slide=N.
- */
 export const DeckProvider = ({ total, children }: DeckProviderProps) => {
-    const [current, setCurrent] = useState<number>(() => {
-        if (typeof window === "undefined") return 0;
-        const params = new URLSearchParams(window.location.search);
-        const raw = params.get("slide");
-        const parsed = raw ? parseInt(raw, 10) - 1 : 0;
-        if (Number.isNaN(parsed)) return 0;
-        return Math.max(0, Math.min(total - 1, parsed));
-    });
+    const router = useRouter();
+    const pathname = usePathname();
+    const searchParams = useSearchParams();
+
     const [isOverview, setIsOverview] = useState(false);
     const [isBlackScreen, setIsBlackScreen] = useState(false);
 
-    // Synchronise URL sans rechargement
-    useEffect(() => {
-        if (typeof window === "undefined") return;
-        const url = new URL(window.location.href);
-        url.searchParams.set("slide", String(current + 1));
-        window.history.replaceState({}, "", url.toString());
-    }, [current]);
+    const current = useMemo(() => {
+        const raw = searchParams.get("slide");
+        const parsed = raw ? parseInt(raw, 10) - 1 : 0;
+
+        if (Number.isNaN(parsed)) return 0;
+
+        return Math.max(0, Math.min(total - 1, parsed));
+    }, [searchParams, total]);
+
+    const replaceSlide = useCallback(
+        (index: number) => {
+            const clamped = Math.max(0, Math.min(total - 1, index));
+            const params = new URLSearchParams(searchParams.toString());
+            params.set("slide", String(clamped + 1));
+
+            router.replace(`${pathname}?${params.toString()}`, {
+                scroll: false,
+            });
+        },
+        [pathname, router, searchParams, total]
+    );
 
     const goTo = useCallback(
         (index: number) => {
-            const clamped = Math.max(0, Math.min(total - 1, index));
-            setCurrent(clamped);
+            replaceSlide(index);
             setIsOverview(false);
             setIsBlackScreen(false);
         },
-        [total]
+        [replaceSlide]
     );
 
     const next = useCallback(() => {
-        setCurrent((c) => Math.min(total - 1, c + 1));
-    }, [total]);
+        replaceSlide(current + 1);
+    }, [current, replaceSlide]);
 
     const previous = useCallback(() => {
-        setCurrent((c) => Math.max(0, c - 1));
-    }, []);
+        replaceSlide(current - 1);
+    }, [current, replaceSlide]);
 
-    const first = useCallback(() => setCurrent(0), []);
-    const last = useCallback(() => setCurrent(total - 1), [total]);
+    const first = useCallback(() => {
+        replaceSlide(0);
+    }, [replaceSlide]);
 
-    const toggleOverview = useCallback(
-        () => setIsOverview((v) => !v),
-        []
-    );
+    const last = useCallback(() => {
+        replaceSlide(total - 1);
+    }, [replaceSlide, total]);
+
+    const toggleOverview = useCallback(() => setIsOverview((value) => !value), []);
     const closeOverview = useCallback(() => setIsOverview(false), []);
-
     const toggleBlackScreen = useCallback(
-        () => setIsBlackScreen((v) => !v),
+        () => setIsBlackScreen((value) => !value),
         []
     );
 
@@ -104,30 +114,30 @@ export const DeckProvider = ({ total, children }: DeckProviderProps) => {
             toggleBlackScreen,
         }),
         [
+            closeOverview,
             current,
-            total,
+            first,
             goTo,
+            isBlackScreen,
+            isOverview,
+            last,
             next,
             previous,
-            first,
-            last,
-            isOverview,
-            toggleOverview,
-            closeOverview,
-            isBlackScreen,
             toggleBlackScreen,
+            toggleOverview,
+            total,
         ]
     );
 
-    return (
-        <DeckContext.Provider value={value}>{children}</DeckContext.Provider>
-    );
+    return <DeckContext.Provider value={value}>{children}</DeckContext.Provider>;
 };
 
 export const useDeck = (): DeckContextValue => {
-    const ctx = useContext(DeckContext);
-    if (!ctx) {
+    const context = useContext(DeckContext);
+
+    if (!context) {
         throw new Error("useDeck must be used within a DeckProvider");
     }
-    return ctx;
+
+    return context;
 };

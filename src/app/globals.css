@@ -1,68 +1,57 @@
 @import "tailwindcss";
 
-/* ──────────────────────────────────────────────────────────────
- * ACTON GREEN — Palette officielle (extraite de AOT - Couleurs.pptx)
- * Deck CVT · Le développement agentique à AOT
- *
- * Main logo : #17E517 vert signature, #00FF00 vert vif
- * Secondary : #34A836 medium · #1B581C dark · #0E300F very dark
- * Neutrals  : #000000 black · #FFFFFF white
- * ────────────────────────────────────────────────────────────── */
-
 :root {
-    /* Backgrounds — noirs avec très légère teinte verte */
-    --aot-bg-base: #020402;
-    --aot-bg-surface: #070b07;
-    --aot-bg-elevated: #0e150e;
-    --aot-bg-overlay: rgba(0, 0, 0, 0.88);
+    --aot-bg-base: #040807;
+    --aot-bg-surface: #0b1210;
+    --aot-bg-elevated: #101916;
+    --aot-bg-panel: rgba(13, 19, 17, 0.86);
+    --aot-bg-overlay: rgba(3, 6, 5, 0.9);
 
-    /* Borders — dégradé du vert AOT secondaire */
-    --aot-border: #152a16;
-    --aot-border-subtle: #0e1b0f;
-    --aot-border-strong: #1b581c;
+    --aot-border: rgba(53, 82, 66, 0.64);
+    --aot-border-subtle: rgba(31, 45, 38, 0.68);
+    --aot-border-strong: rgba(90, 136, 110, 0.9);
 
-    /* Text — blanc sur noir, muted = gris-vert */
-    --aot-text: #ffffff;
-    --aot-text-muted: #a3b5a3;
-    --aot-text-dim: #6b7e6b;
+    --aot-text: #f4f8f4;
+    --aot-text-muted: #b4c0b6;
+    --aot-text-dim: #708076;
 
-    /* Primary — le vert signature AOT */
     --aot-primary: #17e517;
-    --aot-primary-hi: #00ff00;
-    --aot-primary-lo: #1b581c;
-
-    /* Accent — le vert medium de la palette secondaire */
-    --aot-accent: #34a836;
-    --aot-accent-hi: #52d654;
-
-    /* États */
+    --aot-primary-hi: #89ff9d;
+    --aot-primary-lo: #164f22;
+    --aot-accent: #4dd8ff;
+    --aot-accent-hi: #9befff;
+    --aot-signal: #ffbf5b;
+    --aot-signal-hi: #ffd590;
     --aot-success: #17e517;
-    --aot-warning: #f59e0b;
-    --aot-danger: #ef4444;
+    --aot-warning: #ffbf5b;
+    --aot-danger: #ff6b6b;
 
-    /* Gradients */
     --aot-gradient-primary: linear-gradient(
         135deg,
-        #17e517 0%,
-        #00ff00 100%
+        rgba(23, 229, 23, 0.95) 0%,
+        rgba(137, 255, 157, 0.92) 100%
     );
     --aot-gradient-hero: radial-gradient(
-            ellipse at top,
-            rgba(23, 229, 23, 0.12) 0%,
-            transparent 55%
+            circle at 12% 12%,
+            rgba(23, 229, 23, 0.15) 0%,
+            transparent 32%
         ),
         radial-gradient(
-            ellipse at bottom right,
-            rgba(52, 168, 54, 0.08) 0%,
-            transparent 55%
+            circle at 86% 18%,
+            rgba(77, 216, 255, 0.11) 0%,
+            transparent 26%
+        ),
+        radial-gradient(
+            circle at 82% 84%,
+            rgba(255, 191, 91, 0.1) 0%,
+            transparent 24%
         );
+    --aot-shadow-glow: 0 0 42px rgba(23, 229, 23, 0.2);
+    --aot-shadow-card:
+        0 24px 48px rgba(0, 0, 0, 0.36),
+        inset 0 1px 0 rgba(255, 255, 255, 0.03);
+    --aot-shadow-strong: 0 32px 80px rgba(0, 0, 0, 0.52);
 
-    /* Shadows — glow vert AOT signature */
-    --aot-shadow-glow: 0 0 40px rgba(23, 229, 23, 0.28);
-    --aot-shadow-card: 0 4px 24px rgba(0, 0, 0, 0.6);
-    --aot-shadow-strong: 0 20px 60px rgba(0, 0, 0, 0.8);
-
-    /* Radius */
     --aot-radius-sm: 8px;
     --aot-radius-md: 12px;
     --aot-radius-lg: 16px;
@@ -70,31 +59,29 @@
 }
 
 @theme inline {
-    /* Colors mapped for tailwind utilities */
     --color-background: var(--aot-bg-base);
     --color-foreground: var(--aot-text);
-
     --color-surface: var(--aot-bg-surface);
     --color-elevated: var(--aot-bg-elevated);
     --color-border: var(--aot-border);
     --color-border-subtle: var(--aot-border-subtle);
     --color-muted: var(--aot-text-muted);
     --color-dim: var(--aot-text-dim);
-
     --color-primary: var(--aot-primary);
     --color-primary-hi: var(--aot-primary-hi);
     --color-primary-lo: var(--aot-primary-lo);
     --color-accent: var(--aot-accent);
     --color-accent-hi: var(--aot-accent-hi);
+    --color-signal: var(--aot-signal);
+    --color-signal-hi: var(--aot-signal-hi);
     --color-success: var(--aot-success);
     --color-warning: var(--aot-warning);
     --color-danger: var(--aot-danger);
 
-    /* Fonts */
-    --font-sans: var(--font-geist-sans);
-    --font-mono: var(--font-geist-mono);
+    --font-sans: var(--font-plex-sans);
+    --font-mono: var(--font-plex-mono);
+    --font-display: var(--font-space-grotesk);
 
-    /* Radius */
     --radius-sm: var(--aot-radius-sm);
     --radius-md: var(--aot-radius-md);
     --radius-lg: var(--aot-radius-lg);
@@ -109,41 +96,87 @@ html,
 body {
     background: var(--aot-bg-base);
     color: var(--aot-text);
-    font-family: var(--font-sans), "Inter", system-ui, -apple-system, sans-serif;
-    font-feature-settings: "ss01", "cv11";
+    font-family: var(--font-sans), system-ui, sans-serif;
+    font-feature-settings: "ss01", "cv11", "rlig" 1;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     overflow: hidden;
+    min-height: 100%;
 }
 
 body {
+    position: relative;
     background-image: var(--aot-gradient-hero);
     background-attachment: fixed;
 }
 
-/* Selection — contraste maximal vert sur noir */
+body::before,
+body::after {
+    content: "";
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+}
+
+body::before {
+    opacity: 0.18;
+    background-image:
+        linear-gradient(
+            rgba(255, 255, 255, 0.04) 1px,
+            transparent 1px
+        ),
+        linear-gradient(
+            90deg,
+            rgba(255, 255, 255, 0.03) 1px,
+            transparent 1px
+        );
+    background-size: 96px 96px;
+    mask-image: linear-gradient(
+        180deg,
+        rgba(0, 0, 0, 0.84),
+        rgba(0, 0, 0, 0.18)
+    );
+}
+
+body::after {
+    opacity: 0.08;
+    background:
+        linear-gradient(
+            180deg,
+            transparent 0%,
+            rgba(255, 255, 255, 0.08) 49%,
+            transparent 50%
+        );
+    background-size: 100% 6px;
+}
+
 ::selection {
     background: var(--aot-primary);
     color: #000000;
 }
 
-/* Scrollbar */
 ::-webkit-scrollbar {
     width: 10px;
     height: 10px;
 }
+
 ::-webkit-scrollbar-track {
     background: var(--aot-bg-base);
 }
+
 ::-webkit-scrollbar-thumb {
     background: var(--aot-border-strong);
     border-radius: 6px;
 }
+
 ::-webkit-scrollbar-thumb:hover {
     background: var(--aot-primary);
 }
 
-/* Utility classes */
+.font-display {
+    font-family: var(--font-display), var(--font-sans), sans-serif;
+}
+
 .aot-gradient-text {
     background: var(--aot-gradient-primary);
     -webkit-background-clip: text;
@@ -152,28 +185,243 @@ body {
 }
 
 .aot-glass {
-    background: rgba(7, 11, 7, 0.72);
-    backdrop-filter: blur(16px);
-    -webkit-backdrop-filter: blur(16px);
-    border: 1px solid var(--aot-border);
+    background: rgba(9, 15, 13, 0.76);
+    backdrop-filter: blur(18px);
+    -webkit-backdrop-filter: blur(18px);
+    border: 1px solid var(--aot-border-subtle);
+    box-shadow: var(--aot-shadow-card);
 }
 
 .aot-glow {
     box-shadow: var(--aot-shadow-glow);
 }
 
-.aot-noise::before {
+.industrial-shell {
+    background:
+        linear-gradient(
+            180deg,
+            rgba(255, 255, 255, 0.03) 0%,
+            rgba(255, 255, 255, 0) 16%
+        ),
+        linear-gradient(
+            180deg,
+            rgba(5, 9, 8, 0.82) 0%,
+            rgba(4, 8, 7, 0.96) 100%
+        );
+}
+
+.industrial-shell::before {
+    content: "";
+    position: absolute;
+    inset: 1.35%;
+    border: 1px solid rgba(84, 123, 101, 0.3);
+    border-radius: 20px;
+    pointer-events: none;
+}
+
+.industrial-shell::after {
+    content: "";
+    position: absolute;
+    inset: 1.35%;
+    border-radius: 20px;
+    background:
+        radial-gradient(
+            circle at top left,
+            rgba(23, 229, 23, 0.08),
+            transparent 28%
+        ),
+        radial-gradient(
+            circle at bottom right,
+            rgba(77, 216, 255, 0.07),
+            transparent 20%
+        );
+    pointer-events: none;
+}
+
+.industrial-grid::before {
     content: "";
     position: absolute;
     inset: 0;
+    background-image:
+        linear-gradient(rgba(255, 255, 255, 0.04) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+    background-size: 72px 72px;
+    opacity: 0.2;
+    mask-image: radial-gradient(circle at center, black 40%, transparent 100%);
     pointer-events: none;
-    opacity: 0.03;
-    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
 }
 
-/* Focus — vert signature */
+.industrial-panel {
+    position: relative;
+    border-radius: 18px;
+    border: 1px solid var(--aot-border-subtle);
+    background:
+        linear-gradient(
+            180deg,
+            rgba(255, 255, 255, 0.035) 0%,
+            rgba(255, 255, 255, 0) 18%
+        ),
+        var(--aot-bg-panel);
+    box-shadow: var(--aot-shadow-card);
+}
+
+.liquid-dock {
+    position: relative;
+    overflow: hidden;
+    border-radius: 999px;
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    background:
+        linear-gradient(
+            180deg,
+            rgba(255, 255, 255, 0.14) 0%,
+            rgba(255, 255, 255, 0.03) 22%,
+            rgba(11, 18, 16, 0.5) 100%
+        ),
+        rgba(10, 16, 14, 0.48);
+    backdrop-filter: blur(28px) saturate(180%);
+    -webkit-backdrop-filter: blur(28px) saturate(180%);
+    box-shadow:
+        0 22px 48px rgba(0, 0, 0, 0.28),
+        inset 0 1px 0 rgba(255, 255, 255, 0.2),
+        inset 0 -1px 0 rgba(255, 255, 255, 0.05);
+}
+
+.liquid-dock::before {
+    content: "";
+    position: absolute;
+    left: 2.5%;
+    right: 2.5%;
+    top: 0;
+    height: 48%;
+    border-radius: 999px;
+    background: linear-gradient(
+        180deg,
+        rgba(255, 255, 255, 0.18),
+        rgba(255, 255, 255, 0)
+    );
+    pointer-events: none;
+}
+
+.liquid-dock::after {
+    content: "";
+    position: absolute;
+    inset: 1px;
+    border-radius: 999px;
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    pointer-events: none;
+}
+
+.liquid-pill {
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    background: rgba(255, 255, 255, 0.04);
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.08);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+}
+
+.industrial-panel::before {
+    content: "";
+    position: absolute;
+    left: 18px;
+    right: 18px;
+    top: 0;
+    height: 1px;
+    background: linear-gradient(
+        90deg,
+        transparent,
+        rgba(255, 255, 255, 0.24),
+        transparent
+    );
+}
+
+.industrial-panel-accent {
+    border-color: rgba(77, 216, 255, 0.34);
+}
+
+.industrial-panel-primary {
+    border-color: rgba(23, 229, 23, 0.34);
+}
+
+.industrial-panel-signal {
+    border-color: rgba(255, 191, 91, 0.38);
+}
+
+.industrial-kicker {
+    font-family: var(--font-mono), monospace;
+    font-size: 0.68rem;
+    letter-spacing: 0.24em;
+    text-transform: uppercase;
+    color: var(--aot-text-dim);
+}
+
+.industrial-chip {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    border-radius: 999px;
+    border: 1px solid var(--aot-border-subtle);
+    background: rgba(13, 19, 17, 0.82);
+    padding: 0.45rem 0.85rem;
+    font-family: var(--font-mono), monospace;
+    font-size: 0.66rem;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--aot-text-muted);
+}
+
+.industrial-chip[data-tone="primary"] {
+    border-color: rgba(23, 229, 23, 0.36);
+    color: var(--aot-primary-hi);
+}
+
+.industrial-chip[data-tone="accent"] {
+    border-color: rgba(77, 216, 255, 0.36);
+    color: var(--aot-accent-hi);
+}
+
+.industrial-chip[data-tone="signal"] {
+    border-color: rgba(255, 191, 91, 0.38);
+    color: var(--aot-signal-hi);
+}
+
+.industrial-rule {
+    height: 1px;
+    background: linear-gradient(
+        90deg,
+        transparent,
+        rgba(255, 255, 255, 0.14),
+        transparent
+    );
+}
+
+.industrial-stat-value {
+    font-family: var(--font-display), var(--font-sans), sans-serif;
+    font-size: clamp(2rem, 3.6vw, 4rem);
+    line-height: 0.95;
+    letter-spacing: -0.05em;
+}
+
+.industrial-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 999px;
+    background: var(--aot-primary);
+    box-shadow: 0 0 16px rgba(23, 229, 23, 0.4);
+}
+
 :focus-visible {
     outline: 2px solid var(--aot-primary);
     outline-offset: 2px;
     border-radius: 4px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        scroll-behavior: auto !important;
+        transition-duration: 0.01ms !important;
+    }
 }

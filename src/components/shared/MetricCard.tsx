@@ -1,54 +1,80 @@
+import { Minus, TrendingDown, TrendingUp } from "lucide-react";
 import { cn } from "@/lib/utils";
 import type { Metric } from "@/content/metrics";
 
 type MetricCardProps = {
     metric: Metric;
-    /** "primary" (défaut) = vert signature · "accent" = vert medium */
-    accent?: "primary" | "accent";
+    accent?: "primary" | "accent" | "signal";
     className?: string;
 };
 
-/**
- * Carte chiffrée pour slides Contexte et D2R2.
- * Valeur en hero vert monospace, label + source en dessous.
- */
+const trendIcon = {
+    up: TrendingUp,
+    down: TrendingDown,
+    neutral: Minus,
+};
+
+const accentMap = {
+    primary: {
+        color: "var(--aot-primary-hi)",
+        panel: "industrial-panel-primary",
+    },
+    accent: {
+        color: "var(--aot-accent-hi)",
+        panel: "industrial-panel-accent",
+    },
+    signal: {
+        color: "var(--aot-signal-hi)",
+        panel: "industrial-panel-signal",
+    },
+};
+
 export const MetricCard = ({
     metric,
     accent = "primary",
     className,
 }: MetricCardProps) => {
-    const accentVar =
-        accent === "primary"
-            ? "var(--aot-primary)"
-            : "var(--aot-accent-hi)";
+    const theme = accentMap[accent];
+    const TrendIcon = trendIcon[metric.trend ?? "neutral"];
 
     return (
         <div
             className={cn(
-                "aot-glass flex flex-col gap-2 rounded-xl p-5",
-                "border-l-2",
+                "industrial-panel flex h-full flex-col gap-4 p-5",
+                theme.panel,
                 className
             )}
-            style={{ borderLeftColor: accentVar }}
         >
+            <div className="flex items-start justify-between gap-4">
+                <div className="industrial-kicker">Signal marché</div>
+                <div
+                    className="inline-flex h-8 w-8 items-center justify-center rounded-full border bg-[rgba(255,255,255,0.02)]"
+                    style={{ borderColor: `${theme.color}55`, color: theme.color }}
+                >
+                    <TrendIcon size={16} />
+                </div>
+            </div>
+
             <div
-                className="font-mono text-4xl font-bold leading-none lg:text-5xl"
-                style={{ color: accentVar }}
+                className="font-display text-5xl font-semibold leading-none tracking-[-0.06em]"
+                style={{ color: theme.color }}
             >
                 {metric.value}
             </div>
 
-            <div className="text-sm font-medium leading-snug text-[color:var(--aot-text)] lg:text-base">
+            <div className="text-base font-medium leading-snug text-[color:var(--aot-text)]">
                 {metric.label}
             </div>
 
-            <div className="mt-auto flex items-center justify-between gap-2 pt-1">
-                <span className="font-mono text-[0.6rem] leading-tight text-[color:var(--aot-text-dim)]">
+            <div className="mt-auto flex items-center justify-between gap-3">
+                <span className="max-w-[75%] text-xs leading-relaxed text-[color:var(--aot-text-dim)]">
                     {metric.source}
                 </span>
-                {metric.isEstimate && (
-                    <span className="shrink-0 rounded border border-[color:var(--aot-border)] px-1.5 py-0.5 font-mono text-[0.55rem] uppercase tracking-widest text-[color:var(--aot-text-dim)]">
-                        est.
+                {metric.isEstimate ? (
+                    <span className="industrial-chip">Est.</span>
+                ) : (
+                    <span className="industrial-chip" data-tone="accent">
+                        Source
                     </span>
                 )}
             </div>

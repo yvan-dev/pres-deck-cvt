@@ -1,22 +1,44 @@
 import { MATURITY_LEVELS } from "@/content/levels";
 import { LevelCard } from "./LevelCard";
+import { IndustrialPanel } from "./IndustrialPanel";
 
-/**
- * Slide 6 — Vue d'ensemble des 5 niveaux sur une seule slide.
- * 5 LevelCard compact en grille + markers de positionnement AOT.
- */
 export const MaturityOverview = () => (
-    <div className="flex h-full flex-col gap-6">
-        {/* Grille 5 niveaux */}
-        <div className="grid flex-1 grid-cols-5 gap-3">
+    <div className="grid h-full grid-rows-[auto_1fr_auto] gap-6">
+        <div className="grid grid-cols-[1.1fr_0.9fr] gap-6">
+            <IndustrialPanel eyebrow="Lecture rapide" title="Une échelle, deux vrais sauts" tone="primary">
+                <p className="text-sm leading-relaxed text-[color:var(--aot-text-muted)]">
+                    Le vrai changement n&apos;est pas entre N1 et N2. Il se situe au
+                    passage vers l&apos;agent guidé, puis vers le workflow orchestré.
+                </p>
+            </IndustrialPanel>
+
+            <IndustrialPanel eyebrow="Décision" title="Ce que vise ce deck" tone="signal">
+                <div className="grid grid-cols-2 gap-4">
+                    <div>
+                        <div className="industrial-kicker">Court terme</div>
+                        <p className="mt-2 text-sm text-[color:var(--aot-text)]">
+                            Installer N3 comme standard d&apos;équipe.
+                        </p>
+                    </div>
+                    <div>
+                        <div className="industrial-kicker">Moyen terme</div>
+                        <p className="mt-2 text-sm text-[color:var(--aot-text)]">
+                            Structurer N4 sur les workflows à fort levier.
+                        </p>
+                    </div>
+                </div>
+            </IndustrialPanel>
+        </div>
+
+        <div className="grid flex-1 grid-cols-5 gap-4">
             {MATURITY_LEVELS.map((level) => {
                 const positionLabel =
                     level.id === 2
                         ? "AOT aujourd'hui"
                         : level.isShortTermTarget
-                          ? "Cible CT ⭐"
+                          ? "cible 12 mois"
                           : level.isMidTermTarget
-                            ? "Cible MT 🎯"
+                            ? "cible 24 mois"
                             : undefined;
 
                 return (
@@ -30,26 +52,27 @@ export const MaturityOverview = () => (
             })}
         </div>
 
-        {/* Légende */}
-        <div className="flex items-center justify-center gap-6">
-            <div className="flex items-center gap-1.5">
-                <div className="h-2 w-2 rounded-full bg-[color:var(--aot-border-strong)]" />
-                <span className="font-mono text-[0.6rem] uppercase tracking-widest text-[color:var(--aot-text-dim)]">
-                    Marché ~N2-N3
-                </span>
-            </div>
-            <div className="flex items-center gap-1.5">
-                <div className="h-2 w-2 rounded-full bg-[color:var(--aot-accent)]" />
-                <span className="font-mono text-[0.6rem] uppercase tracking-widest text-[color:var(--aot-text-dim)]">
-                    EDF ~N3-N4
-                </span>
-            </div>
-            <div className="flex items-center gap-1.5">
-                <div className="h-2 w-2 rounded-full bg-[color:var(--aot-primary)]" />
-                <span className="font-mono text-[0.6rem] uppercase tracking-widest text-[color:var(--aot-text-dim)]">
-                    AOT cible N3 court terme
-                </span>
-            </div>
+        <div className="grid grid-cols-3 gap-4">
+            <IndustrialPanel eyebrow="N2" title="Assistance locale">
+                <p className="text-sm leading-relaxed text-[color:var(--aot-text-muted)]">
+                    Gains réels mais limités: le développeur reste chef
+                    d&apos;orchestre sur chaque micro-étape.
+                </p>
+            </IndustrialPanel>
+
+            <IndustrialPanel eyebrow="N3" title="Exécution supervisée" tone="primary">
+                <p className="text-sm leading-relaxed text-[color:var(--aot-text-muted)]">
+                    Le prompt devient une délégation de travail avec plan,
+                    implémentation, test et contrôle humain.
+                </p>
+            </IndustrialPanel>
+
+            <IndustrialPanel eyebrow="N4" title="Automation gouvernée" tone="signal">
+                <p className="text-sm leading-relaxed text-[color:var(--aot-text-muted)]">
+                    Le levier supplémentaire vient des gates, de l&apos;observabilité
+                    et de la composition de rôles agents.
+                </p>
+            </IndustrialPanel>
         </div>
     </div>
 );

@@ -5,16 +5,12 @@ import { SLIDES } from "@/lib/slides.config";
 import { cn } from "@/lib/utils";
 import { useDeck } from "./DeckProvider";
 
-/**
- * Mode overview (touche Esc) — grille cliquable des 39 slides.
- * Permet de naviguer rapidement pendant les Q&A.
- */
 export const SlideOverview = () => {
     const { isOverview, closeOverview, goTo, current } = useDeck();
 
     return (
         <AnimatePresence>
-            {isOverview && (
+            {isOverview ? (
                 <motion.div
                     initial={{ opacity: 0 }}
                     animate={{ opacity: 1 }}
@@ -25,28 +21,31 @@ export const SlideOverview = () => {
                     onClick={closeOverview}
                 >
                     <motion.div
-                        initial={{ scale: 0.96 }}
-                        animate={{ scale: 1 }}
-                        exit={{ scale: 0.96 }}
+                        initial={{ scale: 0.97, opacity: 0.95 }}
+                        animate={{ scale: 1, opacity: 1 }}
+                        exit={{ scale: 0.97, opacity: 0.95 }}
                         transition={{ duration: 0.2 }}
-                        className="aot-glass h-[85vh] w-[90vw] overflow-y-auto rounded-xl p-8"
-                        onClick={(e) => e.stopPropagation()}
+                        className="industrial-panel h-[88vh] w-[92vw] overflow-y-auto rounded-[24px] p-8"
+                        onClick={(event) => event.stopPropagation()}
                     >
-                        <div className="mb-6 flex items-center justify-between">
-                            <div>
-                                <h2 className="text-2xl font-semibold text-[color:var(--aot-text)]">
-                                    Vue d&apos;ensemble
+                        <div className="mb-8 flex items-end justify-between gap-6">
+                            <div className="max-w-2xl">
+                                <div className="industrial-kicker">Mode overview</div>
+                                <h2 className="font-display mt-2 text-4xl font-semibold tracking-[-0.05em] text-[color:var(--aot-text)]">
+                                    Cartographie du deck
                                 </h2>
-                                <p className="font-mono text-xs uppercase tracking-[0.2em] text-[color:var(--aot-text-dim)]">
-                                    {SLIDES.length} slides · {"Esc"} pour fermer
+                                <p className="mt-3 text-sm leading-relaxed text-[color:var(--aot-text-muted)]">
+                                    Utilise cette vue pour sauter rapidement entre les
+                                    chapitres pendant les questions ou les relectures.
                                 </p>
                             </div>
+
                             <button
                                 type="button"
                                 onClick={closeOverview}
-                                className="font-mono text-xs uppercase tracking-[0.15em] text-[color:var(--aot-text-muted)] hover:text-[color:var(--aot-text)]"
+                                className="industrial-chip"
                             >
-                                Fermer
+                                Fermer · Esc
                             </button>
                         </div>
 
@@ -57,32 +56,51 @@ export const SlideOverview = () => {
                                     type="button"
                                     onClick={() => goTo(index)}
                                     className={cn(
-                                        "group relative aspect-[16/9] overflow-hidden rounded-lg border text-left transition-all",
+                                        "industrial-panel group flex aspect-[16/10] flex-col justify-between p-4 text-left transition-all duration-150",
                                         index === current
-                                            ? "border-[color:var(--aot-primary)] ring-2 ring-[color:var(--aot-primary)]/30"
-                                            : "border-[color:var(--aot-border)] hover:border-[color:var(--aot-primary-hi)]"
+                                            ? "industrial-panel-primary scale-[1.02]"
+                                            : "hover:border-[rgba(137,255,157,0.3)] hover:bg-[rgba(255,255,255,0.02)]"
                                     )}
-                                    style={{
-                                        background: "var(--aot-bg-surface)",
-                                    }}
                                 >
-                                    <div className="flex h-full flex-col justify-between p-3">
-                                        <div className="font-mono text-[0.55rem] uppercase tracking-[0.15em] text-[color:var(--aot-text-dim)]">
-                                            P{slide.part} · {slide.partLabel}
+                                    <div className="flex items-start justify-between gap-3">
+                                        <div>
+                                            <div className="industrial-kicker">
+                                                P{slide.part} · {slide.partLabel}
+                                            </div>
+                                            <div className="mt-2 text-sm font-medium leading-snug text-[color:var(--aot-text)]">
+                                                {slide.title}
+                                            </div>
                                         </div>
-                                        <div className="text-xs font-medium leading-tight text-[color:var(--aot-text)] line-clamp-3">
-                                            {slide.title}
-                                        </div>
-                                        <div className="font-mono text-[0.55rem] text-[color:var(--aot-text-dim)]">
+                                        <span
+                                            className={cn(
+                                                "rounded-full border px-2 py-1 font-mono text-[0.62rem] uppercase tracking-[0.15em]",
+                                                index === current
+                                                    ? "border-[rgba(23,229,23,0.35)] text-[color:var(--aot-primary-hi)]"
+                                                    : "border-[color:var(--aot-border-subtle)] text-[color:var(--aot-text-dim)]"
+                                            )}
+                                        >
                                             {String(slide.id).padStart(2, "0")}
-                                        </div>
+                                        </span>
+                                    </div>
+
+                                    <div className="mt-4 flex items-center justify-between">
+                                        <span className="text-xs text-[color:var(--aot-text-dim)]">
+                                            {index === current ? "Slide active" : "Aller ici"}
+                                        </span>
+                                        <span
+                                            className={`h-1.5 w-14 rounded-full ${
+                                                index === current
+                                                    ? "bg-[color:var(--aot-primary)]"
+                                                    : "bg-[rgba(255,255,255,0.08)]"
+                                            }`}
+                                        />
                                     </div>
                                 </button>
                             ))}
                         </div>
                     </motion.div>
                 </motion.div>
-            )}
+            ) : null}
         </AnimatePresence>
     );
 };
