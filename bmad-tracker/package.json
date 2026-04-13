@@ -1,0 +1,14 @@
+{
+  "name": "bmad-tracker",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "install:all": "npm install --prefix server && npm install --prefix tracker-ui",
+    "dev": "concurrently --names \"SERVER,UI\" --prefix-colors \"yellow,cyan\" \"npm run dev --prefix server\" \"npm run dev --prefix tracker-ui\"",
+    "dev:server": "npm run dev --prefix server",
+    "dev:ui": "npm run dev --prefix tracker-ui"
+  },
+  "devDependencies": {
+    "concurrently": "^8.2.2"
+  }
+}

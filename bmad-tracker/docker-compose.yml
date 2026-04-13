@@ -1,0 +1,54 @@
+services:
+
+  # ── Serveur tracker : file watcher + SSE ─────────────────────────────────
+  server:
+    build:
+      context: ./server
+      dockerfile: Dockerfile
+    container_name: bmad-tracker-server
+    restart: unless-stopped
+    environment:
+      TASKS_FILE: /app/tasks.json
+    volumes:
+      - ./tasks.json:/app/tasks.json
+    healthcheck:
+      test: ["CMD", "wget", "-qO-", "http://localhost:3001/tasks"]
+      interval: 10s
+      timeout: 5s
+      retries: 3
+      start_period: 5s
+
+  # ── UI : React buildée + Nginx ────────────────────────────────────────────
+  ui:
+    build:
+      context: ./tracker-ui
+      dockerfile: Dockerfile
+    container_name: bmad-tracker-ui
+    restart: unless-stopped
+    ports:
+      - "5173:80"
+    depends_on:
+      server:
+        condition: service_healthy
+
+  # ── Pipeline API (optionnel) ──────────────────────────────────────────────
+  # Décommenter si tu lances le pipeline via docker-compose.
+  # Sinon, le kanban se connecte à l'API pipeline sur localhost:8000 (hôte).
+  #
+  # pipeline-api:
+  #   build:
+  #     context: ../bmad-pipeline
+  #     dockerfile: Dockerfile
+  #   container_name: bmad-pipeline-api
+  #   restart: unless-stopped
+  #   ports:
+  #     - "8000:8000"
+  #   environment:
+  #     PROJECT_ROOT: /app/project
+  #     TASKS_FILE: /app/tasks.json
+  #     BMAD_KIT_PATH: /app/_bmad
+  #   volumes:
+  #     - ./tasks.json:/app/tasks.json
+  #     - ../_bmad:/app/_bmad:ro
+  #     - ${PROJECT_ROOT:-..}:/app/project
+  #   command: ["bmad", "serve", "--host", "0.0.0.0"]

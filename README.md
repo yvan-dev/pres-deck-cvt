@@ -1,6 +1,6 @@
 # pres-deck-cvt
 
-> **Le développement agentique à AOT** — deck de présentation pour le CVT d'ACTON Technology, 100 % codé avec Claude Code.
+> **Le développement agentique à AOT** — deck de présentation pour le CVT d'ACTON Technology, construit via un workflow BMAD piloté par Codex CLI.
 
 Un CVT animé par **Yvan Gunewou** pour évangéliser le développement agentique chez AOT, proposer la création d'un pôle IA, et positionner l'équipe sur l'échelle de maturité IA.
 

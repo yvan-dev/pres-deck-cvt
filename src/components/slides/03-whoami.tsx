@@ -45,7 +45,7 @@ const WhoAmISlide = () => {
                             Je parle depuis la delivery.
                         </h2>
                         <p className="mt-5 max-w-xl text-xl leading-relaxed text-[color:var(--aot-text-muted)]">
-                            Tech Lead D2R2. Workflow agentique déjà pratiqué. Regard orienté exécution.
+                            Développeur. Workflow agentique déjà pratiqué. Regard orienté exécution.
                         </p>
                     </div>
 

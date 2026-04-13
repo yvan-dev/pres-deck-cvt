@@ -120,7 +120,7 @@ const CoverSlide = () => {
                                     Yvan Gunewou
                                 </div>
                                 <div className="mt-2 text-sm text-[color:var(--aot-text-muted)]">
-                                    Tech Lead D2R2 · workflow agentique terrain
+                                    Développeur
                                 </div>
                             </div>
 

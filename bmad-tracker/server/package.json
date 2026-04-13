@@ -1,0 +1,17 @@
+{
+  "name": "bmad-tracker-server",
+  "version": "1.0.0",
+  "description": "File watcher + SSE server for BMAD task tracker",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "start": "node index.js",
+    "dev": "node --env-file=../.env --watch index.js"
+  },
+  "dependencies": {
+    "bmad-tracker": "file:..",
+    "chokidar": "^3.6.0",
+    "cors": "^2.8.5",
+    "express": "^4.18.2"
+  }
+}

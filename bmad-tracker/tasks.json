@@ -1,0 +1,357 @@
+{
+  "project": "pres-deck-cvt",
+  "updatedAt": "2026-04-13T15:14:00.000Z",
+  "tasks": [
+    {
+      "id": "US-001",
+      "title": "Lock deck scope and evidence inventory",
+      "description": "Confirm the 39-slide, 7-part deck scope and classify missing evidence as required inputs or approved fallbacks.",
+      "agent": "PM",
+      "phase": "P1",
+      "priority": "must",
+      "status": "review",
+      "sprint": null,
+      "logs": []
+    },
+    {
+      "id": "US-002",
+      "title": "Define the deck architecture and content model",
+      "description": "Document how the current slide registry, content modules, and deck shell evolve without breaking the deck-first architecture.",
+      "agent": "Archi",
+      "phase": "P2",
+      "priority": "must",
+      "status": "review",
+      "sprint": null,
+      "logs": [
+        {
+          "ts": "2026-04-12T22:53:46.598Z",
+          "msg": "Architecture analysis started from current deck implementation and planning artifacts."
+        },
+        {
+          "ts": "2026-04-12T22:55:26.811Z",
+          "msg": "Current deck shell, slide registry, content modules, placeholders, and fallback constraints analyzed."
+        },
+        {
+          "ts": "2026-04-12T22:58:40.255Z",
+          "msg": "Rewrote docs/architecture.md around the actual single-route deck shell, slide registry, shared primitives, file-backed content, and placeholder replacement path."
+        }
+      ]
+    },
+    {
+      "id": "US-003",
+      "title": "Define projection-safe visual and interaction patterns",
+      "description": "Define the reusable visual, typography, motion, and interaction rules that keep the deck projection-safe and coherent.",
+      "agent": "Design",
+      "phase": "P3",
+      "priority": "must",
+      "status": "review",
+      "sprint": null,
+      "logs": [
+        {
+          "ts": "2026-04-13T00:05:00.000Z",
+          "msg": "Design-system and UX flow specification work started from PRD, architecture, deck plan, and shell review."
+        },
+        {
+          "ts": "2026-04-13T00:18:00.000Z",
+          "msg": "Deck shell, slide registry, shared panels, progress dock, overview, and placeholder patterns analyzed to ground design guidance in the current implementation."
+        },
+        {
+          "ts": "2026-04-13T00:27:00.000Z",
+          "msg": "Updated docs/design-system.md with local-first slide patterns, projection rules, component coherence, and honest fallback guidance."
+        }
+      ]
+    },
+    {
+      "id": "US-021",
+      "title": "Establish deck foundation and presentation theming",
+      "description": "Establish the current Next.js deck foundation, presentation theme, metadata, and reusable content sources.",
+      "agent": "Frontend",
+      "phase": "P4",
+      "priority": "must",
+      "status": "review",
+      "sprint": null,
+      "logs": []
+    },
+    {
+      "id": "US-005",
+      "title": "Harden deck navigation and projection behaviors",
+      "description": "Stabilize the existing navigation shell, URL state, overview, fullscreen, and black-screen behaviors for live presentation use.",
+      "agent": "Frontend",
+      "phase": "P4",
+      "priority": "must",
+      "status": "review",
+      "sprint": null,
+      "logs": []
+    },
+    {
+      "id": "US-006",
+      "title": "Implement reusable visual primitives and fallback states",
+      "description": "Formalize and extend the shared deck primitives and honest fallback states already used by the implemented slides.",
+      "agent": "Frontend",
+      "phase": "P4",
+      "priority": "should",
+      "status": "review",
+      "sprint": null,
+      "logs": []
+    },
+    {
+      "id": "US-022",
+      "title": "Implement contextual opening slides 1 to 5",
+      "description": "Implement the opening narrative slides 1 to 5 covering cover, summary, speaker stance, market shift, and AOT positioning.",
+      "agent": "Frontend",
+      "phase": "P4",
+      "priority": "must",
+      "status": "review",
+      "sprint": null,
+      "logs": []
+    },
+    {
+      "id": "US-023",
+      "title": "Implement slide 6 maturity overview anchor",
+      "description": "Implement slide 6 as the maturity overview anchor using shared cards and centralized level content.",
+      "agent": "Frontend",
+      "phase": "P4",
+      "priority": "must",
+      "status": "review",
+      "sprint": null,
+      "logs": []
+    },
+    {
+      "id": "US-007",
+      "title": "Build slides 7 to 10 for N1, N2, N3, and N3 tools",
+      "description": "Replace slides 7 to 10 placeholders with production slides for N1, N2, N3, and N3 tooling.",
+      "agent": "Frontend",
+      "phase": "P4",
+      "priority": "must",
+      "status": "ready-for-dev",
+      "sprint": 1,
+      "logs": [
+        {
+          "ts": "2026-04-13T15:10:00.000Z",
+          "msg": "Selected for Sprint 1 after dependency-based backlog triage."
+        },
+        {
+          "ts": "2026-04-13T15:14:00.000Z",
+          "msg": "Sprint 1 selection synced to sprint-status.yaml."
+        }
+      ]
+    },
+    {
+      "id": "US-008",
+      "title": "Build slides 11 to 15 for practices, N4, N5, and positioning",
+      "description": "Replace slides 11 to 15 placeholders with production slides for N3 practices, N4, N5, and the positioning board.",
+      "agent": "Frontend",
+      "phase": "P4",
+      "priority": "must",
+      "status": "ready-for-dev",
+      "sprint": 1,
+      "logs": [
+        {
+          "ts": "2026-04-13T15:10:00.000Z",
+          "msg": "Selected for Sprint 1 after dependency-based backlog triage."
+        },
+        {
+          "ts": "2026-04-13T15:14:00.000Z",
+          "msg": "Sprint 1 selection synced to sprint-status.yaml."
+        }
+      ]
+    },
+    {
+      "id": "US-009",
+      "title": "Curate the D2R2 proof pack and evidence rules",
+      "description": "Curate the approved D2R2 claims, metrics assumptions, asset targets, and fallback rules for the proof section.",
+      "agent": "PM",
+      "phase": "P1",
+      "priority": "must",
+      "status": "inprogress",
+      "sprint": 1,
+      "logs": [
+        {
+          "ts": "2026-04-13T15:18:00.000Z",
+          "msg": "Rattachée au Sprint 1 comme prérequis actif des stories D2R2 US-010 et US-011."
+        }
+      ]
+    },
+    {
+      "id": "US-010",
+      "title": "Build slides 16 to 19 for D2R2 context, workflow, and bead proof",
+      "description": "Build slides 16 to 19 for D2R2 context, workflow, ticket-to-PR flow, and bead proof.",
+      "agent": "Frontend",
+      "phase": "P4",
+      "priority": "must",
+      "status": "ready-for-dev",
+      "sprint": 1,
+      "logs": [
+        {
+          "ts": "2026-04-13T15:10:00.000Z",
+          "msg": "Selected for Sprint 1 after dependency-based backlog triage."
+        },
+        {
+          "ts": "2026-04-13T15:14:00.000Z",
+          "msg": "Sprint 1 selection synced to sprint-status.yaml."
+        }
+      ]
+    },
+    {
+      "id": "US-011",
+      "title": "Build slides 20 to 23 for plan, recap, metrics, and lessons",
+      "description": "Build slides 20 to 23 for implementation proof, recap and LEARNED, metrics, and key lessons.",
+      "agent": "Frontend",
+      "phase": "P4",
+      "priority": "must",
+      "status": "ready-for-dev",
+      "sprint": 1,
+      "logs": [
+        {
+          "ts": "2026-04-13T15:10:00.000Z",
+          "msg": "Selected for Sprint 1 after dependency-based backlog triage."
+        },
+        {
+          "ts": "2026-04-13T15:14:00.000Z",
+          "msg": "Sprint 1 selection synced to sprint-status.yaml."
+        }
+      ]
+    },
+    {
+      "id": "US-012",
+      "title": "Formalize the governed level-4 narrative and workflow model",
+      "description": "Frame the governed level-4 story around BMAD stages, LangGraph gates, and explicit human control.",
+      "agent": "Archi",
+      "phase": "P2",
+      "priority": "must",
+      "status": "review",
+      "sprint": null,
+      "logs": [
+        {
+          "ts": "2026-04-12T22:53:46.598Z",
+          "msg": "Architecture analysis started from current deck implementation and planning artifacts."
+        },
+        {
+          "ts": "2026-04-12T22:55:26.811Z",
+          "msg": "Current deck shell, slide registry, content modules, placeholders, and fallback constraints analyzed."
+        },
+        {
+          "ts": "2026-04-12T22:58:40.255Z",
+          "msg": "Added slide-ready governance framing for BMAD and LangGraph plus local-first and fallback ADRs relevant to the deck runtime."
+        }
+      ]
+    },
+    {
+      "id": "US-013",
+      "title": "Build slides 24 to 28 for BMAD and LangGraph progression",
+      "description": "Build slides 24 to 28 to explain why N4 matters and how governed orchestration works in practice.",
+      "agent": "Frontend",
+      "phase": "P4",
+      "priority": "must",
+      "status": "backlog",
+      "sprint": null,
+      "logs": [
+        {
+          "ts": "2026-04-13T15:18:00.000Z",
+          "msg": "Retirée du Sprint 1 pour garder un séquencement cohérent avec le prérequis D2R2 US-009."
+        }
+      ]
+    },
+    {
+      "id": "US-014",
+      "title": "Define the AI pole proposition, mission, pillars, and KPI hypotheses",
+      "description": "Shape the AI pole proposal into a concrete mission, pillar model, roadmap logic, and KPI hypothesis set.",
+      "agent": "PM",
+      "phase": "P1",
+      "priority": "must",
+      "status": "backlog",
+      "sprint": null,
+      "logs": []
+    },
+    {
+      "id": "US-015",
+      "title": "Build slides 29 to 31 for urgency, mission, and pillars",
+      "description": "Build slides 29 to 31 for urgency, mission, and the four AI pole pillars.",
+      "agent": "Frontend",
+      "phase": "P4",
+      "priority": "must",
+      "status": "backlog",
+      "sprint": null,
+      "logs": []
+    },
+    {
+      "id": "US-016",
+      "title": "Build slides 32 to 34 for roadmap, KPIs, and contribution path",
+      "description": "Build slides 32 to 34 for roadmap, KPIs, and the contribution path for the AI pole proposal.",
+      "agent": "Frontend",
+      "phase": "P4",
+      "priority": "must",
+      "status": "backlog",
+      "sprint": null,
+      "logs": []
+    },
+    {
+      "id": "US-004",
+      "title": "Define live-demo guardrails and fallback rules",
+      "description": "Set the demo safety, sanitization, and fallback rules that keep the live segment credible in front of the CVT audience.",
+      "agent": "Secu",
+      "phase": "P3",
+      "priority": "should",
+      "status": "review",
+      "sprint": null,
+      "logs": []
+    },
+    {
+      "id": "US-017",
+      "title": "Design the demo framing and recap pattern",
+      "description": "Define the intro, bounded live state, fallback path, and recap pattern for the demo segment.",
+      "agent": "Design",
+      "phase": "P3",
+      "priority": "should",
+      "status": "review",
+      "sprint": null,
+      "logs": [
+        {
+          "ts": "2026-04-13T00:05:00.000Z",
+          "msg": "Demo framing and recap UX analysis started against current deck shell behaviors and fallback constraints."
+        },
+        {
+          "ts": "2026-04-13T00:18:00.000Z",
+          "msg": "Live-demo flow constraints aligned with current keyboard controls, deep-link model, overview recovery, and honest fallback states."
+        },
+        {
+          "ts": "2026-04-13T00:27:00.000Z",
+          "msg": "Updated docs/ux-flows.md with presenter control flows, deep-link recovery, black-screen usage, and bounded live-demo fallback paths."
+        }
+      ]
+    },
+    {
+      "id": "US-018",
+      "title": "Build slides 35 to 39 for demo framing and closure",
+      "description": "Build slides 35 to 39 for demo framing, recap, next steps, and closing resources.",
+      "agent": "Frontend",
+      "phase": "P4",
+      "priority": "must",
+      "status": "backlog",
+      "sprint": null,
+      "logs": []
+    },
+    {
+      "id": "US-019",
+      "title": "Polish the full 39-slide deck and validate presentation regressions",
+      "description": "Polish the final deck and validate slide order, shell regressions, readability, motion, and fallback behavior.",
+      "agent": "QA",
+      "phase": "P4",
+      "priority": "must",
+      "status": "backlog",
+      "sprint": null,
+      "logs": []
+    },
+    {
+      "id": "US-020",
+      "title": "Prepare the local build, optional preview, and rehearsal handoff",
+      "description": "Package the local build path, optional preview setup, and rehearsal checklist for final CVT delivery.",
+      "agent": "DevOps",
+      "phase": "P4",
+      "priority": "should",
+      "status": "inprogress",
+      "sprint": null,
+      "logs": []
+    }
+  ]
+}

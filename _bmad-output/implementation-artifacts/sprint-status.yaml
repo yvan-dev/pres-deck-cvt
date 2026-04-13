@@ -1,0 +1,34 @@
+# generated: 2026-04-12T22:18:34Z
+# last_updated: 2026-04-13T15:18:00Z
+# project: pres-deck-cvt
+# project_key: NOKEY
+# tracking_system: file-system
+# story_location: _bmad-output/implementation-artifacts
+
+generated: 2026-04-12T22:18:34Z
+last_updated: 2026-04-13T15:18:00Z
+project: pres-deck-cvt
+project_key: NOKEY
+tracking_system: file-system
+story_location: _bmad-output/implementation-artifacts
+
+sprint_plan:
+  - Sprint: 1
+    Stories sélectionnées:
+      - US-009
+      - US-007
+      - US-008
+      - US-010
+      - US-011
+    Ordre d'implémentation:
+      - US-009
+      - US-007
+      - US-008
+      - US-010
+      - US-011
+    Dépendances:
+      - "US-009 is already in progress and is carried into Sprint 1 as the prerequisite proof-pack and fallback work for the D2R2 slide batch."
+      - "US-007 depends on the reviewed shell hardening and shared primitives from US-005 and US-006."
+      - "US-008 depends on US-007 so the maturity sequence reuses validated layouts, terminology, and narrative patterns."
+      - "US-010 depends on US-009 finishing the D2R2 proof pack, asset targets, and fallback wording before proof slides are built."
+      - "US-011 depends on US-010 and reuses the evidence framing curated in US-009 for plan, metrics, and lessons slides."

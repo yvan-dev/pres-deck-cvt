@@ -19,10 +19,19 @@
 
 # production
 /build
+/bmad-pipeline/bmad_pipeline.egg-info/
+/bmad-pipeline/serve-*.log
+/bmad-pipeline/serve-*.err.log
+/bmad-pipeline/.claude/
 
 # misc
 .DS_Store
 *.pem
+__pycache__/
+*.py[cod]
+.forge/
+codex-native-smoke.txt
+/bmad-pipeline/codex-smoke.txt
 
 # debug
 npm-debug.log*

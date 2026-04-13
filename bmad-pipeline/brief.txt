@@ -1,0 +1,5 @@
+pres-deck-cvt - application Next.js 16 / React 19 / TypeScript qui sert de deck de presentation pour le CVT d'ACTON Technology sur le developpement agentique et les avancees de l'IA chez AOT.
+Objectif produit : livrer un site de presentation credible, moderne, navigable et projetable, qui explique les 5 niveaux de maturite IA, demontre le workflow D2R2, presente BMAD + LangGraph, defend la creation d'un pole IA AOT et supporte une demo live, sans casser l'experience de projection ni la structure des 39 slides.
+Contrainte importante : les pipelines BMAD, le tracker et les gates ne sont pas le produit principal. Ils servent uniquement de workflow de developpement agentique pour realiser ce deck et produire des artefacts de pilotage. Le PRD, le backlog et les stories doivent donc decrire d'abord le deck, son contenu, son experience de presentation et ses livrables, puis seulement les besoins de workflow en support si c'est necessaire.
+Sources de verite produit : README.md, plans/deck-plan.md, plans/deck-outline.md et le code de l'application.
+Langue produit : francais.
