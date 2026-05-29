@@ -45,14 +45,14 @@ export const SLIDES: SlideMeta[] = [
         id: 2,
         part: 1,
         partLabel: PARTS[1],
-        title: "Format 15 / 15 / 10",
+        title: "Sommaire",
         component: SpeechTimingSlide,
     },
     {
         id: 3,
         part: 1,
         partLabel: PARTS[1],
-        title: "L'IA devient une unite d'execution",
+        title: "Les niveaux d'IA",
         component: IndustrialNarrativeMap,
     },
     {

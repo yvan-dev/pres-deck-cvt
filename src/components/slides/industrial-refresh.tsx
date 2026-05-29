@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import {
     ArrowRight,
     Bot,
@@ -54,6 +55,75 @@ const roadmap = [
         horizon: "60-90 j",
         title: "Piloter N4",
         detail: "un flux a gates fortes, observabilite, rollback humain",
+    },
+];
+
+const agendaItems = [
+    {
+        title: "Comprendre les niveaux IA",
+        detail: "N1 à N5, et pourquoi N3 est le prochain standard utile.",
+        icon: Layers3,
+        tone: "primary" as const,
+    },
+    {
+        title: "Positionner AOT",
+        detail: "Ce que nous faisons déjà, ce qui manque pour rendre la pratique robuste.",
+        icon: Target,
+        tone: "accent" as const,
+    },
+    {
+        title: "Prouver avec RMC",
+        detail: "Un cas terrain pour montrer demande, plan, patch, validation.",
+        icon: ShieldCheck,
+        tone: "signal" as const,
+    },
+    {
+        title: "Structurer le pôle IA",
+        detail: "Standards, veille, workflows, formation et marchés développeurs augmentés.",
+        icon: Factory,
+        tone: "primary" as const,
+    },
+    {
+        title: "Rendre la démo tangible",
+        detail: "Montrer au public ce qui change dans le delivery quotidien.",
+        icon: PlayCircle,
+        tone: "accent" as const,
+    },
+    {
+        title: "Décider la suite",
+        detail: "N3 sur pilotes, N4 ciblé, mandat transverse clair.",
+        icon: CheckCircle2,
+        tone: "signal" as const,
+    },
+];
+
+const levelPrimer = [
+    {
+        level: "N1",
+        title: "Chat",
+        detail: "Question / réponse hors contexte projet.",
+    },
+    {
+        level: "N2",
+        title: "Copilote",
+        detail: "Assistance locale dans l'IDE ou le fichier courant.",
+    },
+    {
+        level: "N3",
+        title: "Agent guidé",
+        detail: "Tâche complète déléguée, avec plan, patch, tests et revue humaine.",
+        tone: "primary" as const,
+    },
+    {
+        level: "N4",
+        title: "Workflow gouverné",
+        detail: "Chaîne d'agents avec gates, traces et points de reprise.",
+        tone: "signal" as const,
+    },
+    {
+        level: "N5",
+        title: "Essaim autonome",
+        detail: "Agents qui collaborent en autonomie, encore peu mature en production.",
     },
 ];
 
@@ -372,71 +442,111 @@ export const QaSlide = () => (
 );
 
 export const SpeechTimingSlide = () => (
-    <Slide slideKey={2} slideNumber={2} eyebrow="Format - 40 minutes">
-        <div className="grid h-full grid-rows-[auto_1fr] gap-7">
-            <div className="max-w-5xl">
-                <div className="industrial-kicker">Run of show</div>
-                <h2 className="font-display mt-4 text-6xl font-semibold tracking-[-0.06em] text-[color:var(--aot-text)]">
-                    15 minutes pour cadrer. 15 pour prouver. 10 pour decider.
-                </h2>
+    <Slide slideKey={2} slideNumber={2} eyebrow="Sommaire">
+        <div className="grid h-full grid-cols-[0.88fr_1.12fr] gap-7">
+            <div className="flex flex-col justify-between">
+                <div>
+                    <div className="industrial-kicker">Plan de lecture</div>
+                    <h2 className="font-display mt-4 text-6xl font-semibold leading-[0.95] tracking-[-0.06em] text-[color:var(--aot-text)]">
+                        Ce que le deck doit rendre clair.
+                    </h2>
+                    <p className="mt-5 max-w-xl text-xl leading-relaxed text-[color:var(--aot-text-muted)]">
+                        Comprendre les niveaux, prouver le mode agent guidé, puis décider comment AOT l&apos;industrialise.
+                    </p>
+                </div>
+
+                <div className="relative min-h-[14rem] overflow-hidden rounded-[22px] border border-[color:var(--aot-border-subtle)]">
+                    <Image
+                        src="/generated/ai-maturity-levels.png"
+                        alt="Progression visuelle des niveaux de maturité IA"
+                        fill
+                        className="object-cover"
+                        sizes="38vw"
+                    />
+                    <div className="absolute inset-0 bg-[linear-gradient(180deg,transparent_0%,rgba(0,0,0,0.5)_100%)]" />
+                    <div className="absolute bottom-4 left-4 right-4">
+                        <div className="industrial-kicker text-white/70">Fil rouge</div>
+                        <div className="mt-1 text-2xl font-semibold text-white">
+                            N2 aujourd&apos;hui / N3 comme standard
+                        </div>
+                    </div>
+                </div>
             </div>
 
-            <div className="grid grid-cols-[1fr_1fr_0.8fr] gap-5">
-                <IndustrialPanel eyebrow="15 min" title="Speech" tone="primary" className="justify-between">
-                    <div className="grid gap-3 text-sm text-[color:var(--aot-text-muted)]">
-                        <span>Pourquoi maintenant</span>
-                        <span>Niveaux de maturite</span>
-                        <span>Cible AOT N3 puis N4</span>
-                    </div>
-                </IndustrialPanel>
-                <IndustrialPanel eyebrow="15 min" title="Demo" tone="accent" className="justify-between">
-                    <div className="grid gap-3 text-sm text-[color:var(--aot-text-muted)]">
-                        <span>Demande naturelle</span>
-                        <span>Investigation agentique</span>
-                        <span>Patch + verification</span>
-                    </div>
-                </IndustrialPanel>
-                <IndustrialPanel eyebrow="10 min" title="Q/R" tone="signal" className="justify-between">
-                    <div className="grid gap-3 text-sm text-[color:var(--aot-text-muted)]">
-                        <span>Risques</span>
-                        <span>Priorites</span>
-                        <span>Decision</span>
-                    </div>
-                </IndustrialPanel>
+            <div className="grid grid-cols-2 gap-4">
+                {agendaItems.map((item, index) => {
+                    const Icon = item.icon;
+
+                    return (
+                        <IndustrialPanel
+                            key={item.title}
+                            eyebrow={`Point ${index + 1}`}
+                            title={item.title}
+                            tone={item.tone}
+                            className="justify-between"
+                        >
+                            <div className="flex items-center justify-between gap-4">
+                                <div className="text-sm leading-relaxed text-[color:var(--aot-text-muted)]">
+                                    {item.detail}
+                                </div>
+                                <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-2xl border border-[color:var(--aot-border-subtle)] bg-[color:var(--aot-icon-bg)] text-[color:var(--aot-text-muted)]">
+                                    <Icon size={18} />
+                                </div>
+                            </div>
+                        </IndustrialPanel>
+                    );
+                })}
             </div>
         </div>
     </Slide>
 );
 
 export const IndustrialNarrativeMap = () => (
-    <Slide slideKey={3} slideNumber={3} eyebrow="Partie 1 - Contexte">
-        <div className="grid h-full grid-cols-[1.02fr_0.98fr] gap-7">
+    <Slide slideKey={3} slideNumber={3} eyebrow="Niveaux IA">
+        <div className="grid h-full grid-cols-[0.95fr_1.05fr] gap-7">
             <div className="flex flex-col justify-between">
                 <div>
-                    <div className="industrial-kicker">Lecture executive</div>
+                    <div className="industrial-kicker">Cadre commun</div>
                     <h2 className="font-display mt-4 text-6xl font-semibold leading-[0.96] tracking-[-0.06em] text-[color:var(--aot-text)]">
-                        L&apos;IA devient une unite d&apos;execution supervisee.
+                        N1, N2, N3: de quoi parle-t-on ?
                     </h2>
                     <p className="mt-5 text-xl leading-relaxed text-[color:var(--aot-text-muted)]">
-                        Le saut important n&apos;est pas N1 vers N2. C&apos;est N2 vers N3:
-                        deleguer une tache complete sans perdre le controle.
+                        Le saut utile n&apos;est pas d&apos;avoir un outil IA. C&apos;est de déléguer une tâche complète sans perdre le contrôle.
                     </p>
                 </div>
 
-                <IndustrialPanel eyebrow="Angle" title="Ni hype, ni rejet: un standard de delivery" tone="primary">
-                    <div className="text-base font-medium text-[color:var(--aot-text)]">
-                        Le bon indicateur devient la capacite a specifier, verifier et apprendre.
+                <div className="relative min-h-[13rem] overflow-hidden rounded-[22px] border border-[color:var(--aot-border-subtle)]">
+                    <Image
+                        src="/generated/ai-maturity-levels.png"
+                        alt="Echelle visuelle des niveaux IA"
+                        fill
+                        className="object-cover"
+                        sizes="40vw"
+                    />
+                    <div className="absolute inset-0 bg-[linear-gradient(90deg,rgba(0,0,0,0.62)_0%,transparent_72%)]" />
+                    <div className="absolute bottom-4 left-4 max-w-md">
+                        <div className="industrial-kicker text-white/70">Cible pragmatique</div>
+                        <div className="mt-1 text-2xl font-semibold text-white">
+                            N3 robuste avant N4
+                        </div>
                     </div>
-                </IndustrialPanel>
+                </div>
             </div>
 
-            <div className="grid grid-cols-2 gap-4">
-                <IndustrialPanel eyebrow="N1" title="Question" />
-                <IndustrialPanel eyebrow="N2" title="Assistance locale" />
-                <IndustrialPanel eyebrow="N3" title="Execution supervisee" tone="primary" />
-                <IndustrialPanel eyebrow="N4" title="Workflow orchestre" tone="signal" />
-                <IndustrialPanel eyebrow="N5" title="Essaim autonome" />
-                <IndustrialPanel eyebrow="Cible AOT" title="N3 robuste, N4 cible" tone="accent" />
+            <div className="grid gap-3">
+                {levelPrimer.map((item) => (
+                    <IndustrialPanel
+                        key={item.level}
+                        eyebrow={item.level}
+                        title={item.title}
+                        tone={item.tone ?? "neutral"}
+                        className="gap-2.5 p-4"
+                    >
+                        <div className="text-sm leading-relaxed text-[color:var(--aot-text-muted)]">
+                            {item.detail}
+                        </div>
+                    </IndustrialPanel>
+                ))}
             </div>
         </div>
     </Slide>
