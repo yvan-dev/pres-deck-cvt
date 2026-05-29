@@ -4,6 +4,7 @@ import {
     IBM_Plex_Sans,
     Space_Grotesk,
 } from "next/font/google";
+import { ThemeProvider } from "@/components/theme/ThemeProvider";
 import "./globals.css";
 
 const plexSans = IBM_Plex_Sans({
@@ -57,10 +58,11 @@ export default function RootLayout({
     return (
         <html
             lang="fr"
+            suppressHydrationWarning
             className={`${plexSans.variable} ${plexMono.variable} ${spaceGrotesk.variable} h-full antialiased`}
         >
             <body className="relative h-full w-full overflow-hidden bg-[color:var(--aot-bg-base)] text-[color:var(--aot-text)]">
-                {children}
+                <ThemeProvider>{children}</ThemeProvider>
             </body>
         </html>
     );

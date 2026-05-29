@@ -8,6 +8,7 @@ import { SlideProgress } from "./SlideProgress";
 import { SlideOverview } from "./SlideOverview";
 import { BlackScreen } from "./BlackScreen";
 import { SLIDES } from "@/lib/slides.config";
+import { ThemeToggle } from "@/components/theme/ThemeToggle";
 
 const DeckInner = () => {
     const {
@@ -80,18 +81,19 @@ const DeckInner = () => {
 
     return (
         <div className="relative flex h-screen w-screen items-center justify-center bg-[color:var(--aot-bg-base)]">
-            <div className="pointer-events-none absolute inset-0 overflow-hidden">
-                <div className="absolute -left-[10%] top-[12%] h-80 w-80 rounded-full bg-[rgba(23,229,23,0.08)] blur-3xl" />
-                <div className="absolute right-[4%] top-[16%] h-72 w-72 rounded-full bg-[rgba(77,216,255,0.08)] blur-3xl" />
-                <div className="absolute bottom-[8%] right-[18%] h-72 w-72 rounded-full bg-[rgba(255,191,91,0.06)] blur-3xl" />
-            </div>
-
             <div className="relative" style={frameStyle}>
-                <div className="relative h-full w-full overflow-hidden rounded-[28px] shadow-[0_36px_120px_rgba(0,0,0,0.55)]">
+                <div
+                    className="relative h-full w-full overflow-hidden rounded-[28px]"
+                    style={{ boxShadow: "var(--aot-frame-shadow)" }}
+                >
                     <AnimatePresence mode="wait">
                         <SlideComponent key={current} />
                     </AnimatePresence>
                 </div>
+            </div>
+
+            <div className="pointer-events-none absolute right-[calc(50vw-min(50vw-1.1rem,(100vh-6.4rem)*8/9)+1rem)] top-[1rem] z-30">
+                <ThemeToggle />
             </div>
 
             <div

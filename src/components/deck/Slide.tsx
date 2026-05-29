@@ -1,6 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
+import Image from "next/image";
 import { type ReactNode } from "react";
 import { cn } from "@/lib/utils";
 
@@ -68,6 +69,17 @@ export const Slide = ({
                     ) : null}
                 </div>
             )}
+
+            <div className="aot-logo-mark absolute bottom-[3.05%] left-[4.6%] z-10 flex items-center rounded-full px-3 py-2">
+                <Image
+                    src="/aot-academy-logo.png"
+                    alt="AOT Academy"
+                    width={432}
+                    height={176}
+                    className="h-7 w-auto"
+                    priority={slideNumber === 1}
+                />
+            </div>
 
             <div
                 className={cn(
