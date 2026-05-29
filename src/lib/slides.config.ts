@@ -13,6 +13,7 @@ import {
     RmcProofSlide,
     RoadmapSlide,
     SpeechTimingSlide,
+    WhyAiPoleSlide,
 } from "@/components/slides/industrial-refresh";
 
 export type PartId = 1 | 2 | 3 | 4 | 5;
@@ -94,25 +95,32 @@ export const SLIDES: SlideMeta[] = [
         id: 9,
         part: 4,
         partLabel: PARTS[4],
+        title: "Pourquoi un pole IA chez AOT",
+        component: WhyAiPoleSlide,
+    },
+    {
+        id: 10,
+        part: 4,
+        partLabel: PARTS[4],
         title: "Pole IA transverse",
         component: AiPoleSlide,
     },
     {
-        id: 10,
+        id: 11,
         part: 5,
         partLabel: PARTS[5],
         title: "Briefing demo live",
         component: DemoBriefingSlide,
     },
     {
-        id: 11,
+        id: 12,
         part: 5,
         partLabel: PARTS[5],
         title: "Roadmap 90 jours",
         component: RoadmapSlide,
     },
     {
-        id: 12,
+        id: 13,
         part: 5,
         partLabel: PARTS[5],
         title: "Questions et decisions",

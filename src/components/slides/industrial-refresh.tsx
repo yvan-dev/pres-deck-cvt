@@ -34,10 +34,10 @@ const workflow = [
 ];
 
 const demoSteps = [
-    "partir d'une demande produit concrete",
-    "laisser l'agent investiguer le repo",
-    "faire coder une evolution limitee",
-    "verifier les tests et les compromis",
+    "vous partez d'une demande produit concrète",
+    "vous voyez l'agent investiguer le repo",
+    "vous suivez une évolution limitée",
+    "vous vérifiez les tests et les compromis",
 ];
 
 const roadmap = [
@@ -55,6 +55,33 @@ const roadmap = [
         horizon: "60-90 j",
         title: "Piloter N4",
         detail: "un flux a gates fortes, observabilite, rollback humain",
+    },
+];
+
+const aiPoleReasons = [
+    {
+        title: "Uniformiser",
+        detail: "Même vocabulaire, mêmes garde-fous, mêmes critères de validation.",
+        icon: ShieldCheck,
+        tone: "primary" as const,
+    },
+    {
+        title: "Faire le tri",
+        detail: "Beaucoup d'outils IA, peu de choix réellement industrialisables.",
+        icon: Radar,
+        tone: "accent" as const,
+    },
+    {
+        title: "Optimiser",
+        detail: "Des workflows adaptés aux projets, pas des recettes génériques.",
+        icon: Route,
+        tone: "signal" as const,
+    },
+    {
+        title: "Préparer",
+        detail: "Former les consultants aux marchés des développeurs augmentés.",
+        icon: UsersRound,
+        tone: "primary" as const,
     },
 ];
 
@@ -308,102 +335,190 @@ export const GovernanceSlide = () => (
     </Slide>
 );
 
-export const AiPoleSlide = () => (
-    <Slide slideKey={9} slideNumber={9} eyebrow="Partie 4 - Capacite transverse">
-        <div className="grid h-full grid-rows-[auto_1fr] gap-7">
-            <div className="flex items-end justify-between gap-8">
-                <div className="max-w-5xl">
-                    <div className="industrial-kicker">Pole IA</div>
-                    <h2 className="font-display mt-4 text-6xl font-semibold tracking-[-0.06em] text-[color:var(--aot-text)]">
-                        Sortir des initiatives individuelles.
+export const WhyAiPoleSlide = () => (
+    <Slide slideKey={9} slideNumber={9} eyebrow="Partie 4 / Pôle IA">
+        <div className="grid h-full grid-cols-[0.9fr_1.1fr] gap-7">
+            <div className="flex flex-col justify-between">
+                <div>
+                    <div className="industrial-kicker">Pourquoi maintenant</div>
+                    <h2 className="font-display mt-4 text-6xl font-semibold leading-[0.96] tracking-[-0.06em] text-[color:var(--aot-text)]">
+                        AOT a besoin d&apos;un pôle IA.
                     </h2>
-                    <p className="mt-5 text-xl text-[color:var(--aot-text-muted)]">
-                        Pour tenir la qualite, l&apos;IA doit devenir une capacite partagee.
+                    <p className="mt-5 max-w-xl text-xl leading-relaxed text-[color:var(--aot-text-muted)]">
+                        L&apos;IA avance trop vite pour rester une somme d&apos;initiatives individuelles.
                     </p>
                 </div>
-                <Factory className="mb-2 text-[color:var(--aot-primary)]" size={52} />
+
+                <IndustrialPanel eyebrow="Thèse" title="Le pôle IA transforme l'expérimentation en capacité." tone="primary">
+                    <div className="text-base font-medium text-[color:var(--aot-text)]">
+                        Il met de l&apos;ordre dans les outils, les méthodes et la montée en compétence.
+                    </div>
+                </IndustrialPanel>
             </div>
 
-            <div className="grid grid-cols-4 gap-4">
+            <div className="grid min-h-0 grid-rows-[1fr_auto] gap-4">
+                <div className="relative min-h-0 overflow-hidden rounded-[22px] border border-[color:var(--aot-border-subtle)]">
+                    <Image
+                        src="/generated/ai-pole-hub.png"
+                        alt="Illustration d'un pôle IA transverse"
+                        fill
+                        className="object-cover"
+                        sizes="52vw"
+                    />
+                    <div className="absolute inset-0 bg-[linear-gradient(180deg,transparent_0%,rgba(0,0,0,0.55)_100%)]" />
+                    <div className="absolute bottom-4 left-4 right-4">
+                        <div className="industrial-kicker text-white/70">Mission</div>
+                        <div className="mt-1 text-2xl font-semibold text-white">
+                            standards / veille / workflows / marché
+                        </div>
+                    </div>
+                </div>
+
+                <div className="grid grid-cols-4 gap-3">
+                    {aiPoleReasons.map((item) => {
+                        const Icon = item.icon;
+
+                        return (
+                            <IndustrialPanel
+                                key={item.title}
+                                eyebrow="Besoin"
+                                title={item.title}
+                                tone={item.tone}
+                                className="gap-2 p-4"
+                            >
+                                <Icon size={18} className="text-[color:var(--aot-text-muted)]" />
+                                <div className="text-xs leading-relaxed text-[color:var(--aot-text-muted)]">
+                                    {item.detail}
+                                </div>
+                            </IndustrialPanel>
+                        );
+                    })}
+                </div>
+            </div>
+        </div>
+    </Slide>
+);
+
+export const AiPoleSlide = () => (
+    <Slide slideKey={10} slideNumber={10} eyebrow="Partie 4 / Capacité transverse">
+        <div className="grid h-full grid-cols-[1.05fr_0.95fr] gap-7">
+            <div className="grid grid-cols-2 gap-4">
                 <IndustrialPanel eyebrow="1" title="Standards" tone="primary">
                     <div className="text-sm leading-relaxed text-[color:var(--aot-text-muted)]">
-                        prompts, checklists, securite, criteres de definition of done.
+                        Prompts, checklists, sécurité, critères de définition of done.
                     </div>
                 </IndustrialPanel>
                 <IndustrialPanel eyebrow="2" title="Enablement">
                     <div className="text-sm leading-relaxed text-[color:var(--aot-text-muted)]">
-                        formation courte, pairing, bibliotheque d&apos;exemples.
+                        Formation courte, pairing, bibliothèque d&apos;exemples.
                     </div>
                 </IndustrialPanel>
                 <IndustrialPanel eyebrow="3" title="Outillage" tone="accent">
                     <div className="text-sm leading-relaxed text-[color:var(--aot-text-muted)]">
-                        templates repo, agents, observabilite, couts et traces.
+                        Templates repo, agents, observabilité, coûts et traces.
                     </div>
                 </IndustrialPanel>
                 <IndustrialPanel eyebrow="4" title="Gouvernance" tone="signal">
                     <div className="text-sm leading-relaxed text-[color:var(--aot-text-muted)]">
-                        usages autorises, controle humain, capitalisation des risques.
+                        Usages autorisés, contrôle humain, capitalisation des risques.
                     </div>
                 </IndustrialPanel>
+            </div>
+
+            <div className="flex flex-col justify-between">
+                <div>
+                    <div className="industrial-kicker">Modèle opératoire</div>
+                    <h2 className="font-display mt-4 text-6xl font-semibold leading-[0.96] tracking-[-0.06em] text-[color:var(--aot-text)]">
+                        Une capacité partagée, pas un centre de coûts.
+                    </h2>
+                    <p className="mt-5 text-xl leading-relaxed text-[color:var(--aot-text-muted)]">
+                        Le pôle IA aide les projets à livrer mieux, plus vite, avec moins de variabilité.
+                    </p>
+                </div>
+                <Factory className="text-[color:var(--aot-primary)]" size={58} />
             </div>
         </div>
     </Slide>
 );
 
 export const DemoBriefingSlide = () => (
-    <Slide slideKey={10} slideNumber={10} eyebrow="Partie 5 - Demo">
-        <div className="grid h-full grid-cols-[0.92fr_1.08fr] gap-7">
-            <div className="flex flex-col justify-between">
-                <div>
-                    <div className="industrial-kicker">15 minutes demo</div>
-                    <h2 className="font-display mt-4 text-6xl font-semibold leading-[0.96] tracking-[-0.06em] text-[color:var(--aot-text)]">
-                        Montrer le controle, pas la magie.
+    <Slide slideKey={11} slideNumber={11} eyebrow="Partie 5 / Démo">
+        <div className="relative h-full overflow-hidden rounded-[24px] border border-[color:var(--aot-border-subtle)]">
+            <Image
+                src="/generated/demo-stage.png"
+                alt="Scène de démonstration du workflow agentique"
+                fill
+                className="object-cover"
+                sizes="90vw"
+            />
+            <div className="absolute inset-0 bg-[linear-gradient(90deg,rgba(0,0,0,0.78)_0%,rgba(0,0,0,0.46)_48%,rgba(0,0,0,0.18)_100%)]" />
+
+            <div className="absolute inset-0 grid grid-cols-[0.92fr_1.08fr] gap-7 p-8">
+                <div className="flex flex-col justify-center">
+                    <div className="industrial-kicker text-white/70">Live</div>
+                    <h2 className="font-display mt-4 text-[7.5rem] font-semibold leading-[0.82] tracking-[-0.08em] text-white">
+                        Démo
                     </h2>
-                    <p className="mt-5 text-xl leading-relaxed text-[color:var(--aot-text-muted)]">
-                        La demo doit rendre visible le passage demande - plan - patch - verification.
+                    <p className="mt-7 max-w-lg text-2xl leading-snug text-white/78">
+                        Vous allez voir comment une demande devient un plan, puis une modification vérifiée.
                     </p>
                 </div>
 
-                <IndustrialPanel eyebrow="Fallback" title="Si le live bloque, montrer le diff et les checks" tone="signal">
-                    <div className="text-base font-medium text-[color:var(--aot-text)]">
-                        Le message reste le meme: l&apos;agent travaille, l&apos;humain pilote.
-                    </div>
-                </IndustrialPanel>
-            </div>
-
-            <div className="grid gap-4">
+                <div className="grid content-center gap-4">
                 {demoSteps.map((step, index) => (
                     <IndustrialPanel
                         key={step}
-                        eyebrow={`Sequence ${index + 1}`}
+                        eyebrow={`Séquence ${index + 1}`}
                         title={step}
                         tone={index === 2 ? "primary" : index === 3 ? "signal" : "neutral"}
+                        className="bg-[rgba(5,10,8,0.72)]"
                     >
-                        <div className="flex items-center gap-3 text-sm text-[color:var(--aot-text-muted)]">
+                        <div className="flex items-center gap-3 text-sm text-white/70">
                             <PlayCircle size={17} />
-                            <span>{index < 2 ? "preparer le terrain" : "rendre la preuve visible"}</span>
+                            <span>{index < 2 ? "préparer le contexte" : "rendre la preuve visible"}</span>
                         </div>
                     </IndustrialPanel>
                 ))}
+                </div>
             </div>
         </div>
     </Slide>
 );
 
 export const RoadmapSlide = () => (
-    <Slide slideKey={11} slideNumber={11} eyebrow="Partie 5 - Atterrissage">
-        <div className="grid h-full grid-rows-[auto_1fr_auto] gap-6">
-            <div className="max-w-5xl">
-                <div className="industrial-kicker">Prochaines etapes</div>
-                <h2 className="font-display mt-4 text-6xl font-semibold tracking-[-0.06em] text-[color:var(--aot-text)]">
-                    Une trajectoire en 90 jours.
-                </h2>
-                <p className="mt-5 text-xl text-[color:var(--aot-text-muted)]">
-                    Suffisamment courte pour apprendre. Suffisamment structuree pour mesurer.
-                </p>
+    <Slide slideKey={12} slideNumber={12} eyebrow="Partie 5 / Atterrissage">
+        <div className="grid h-full grid-cols-[0.94fr_1.06fr] gap-7">
+            <div className="flex flex-col justify-between">
+                <div>
+                    <div className="industrial-kicker">Prochaines étapes</div>
+                    <h2 className="font-display mt-4 text-6xl font-semibold leading-[0.96] tracking-[-0.06em] text-[color:var(--aot-text)]">
+                        Une trajectoire en 90 jours.
+                    </h2>
+                    <p className="mt-5 text-xl leading-relaxed text-[color:var(--aot-text-muted)]">
+                        Courte pour apprendre. Structurée pour mesurer.
+                    </p>
+                </div>
+
+                <IndustrialPanel eyebrow="Décision attendue" title="Valider N3 comme standard AOT sur les projets pilotes" tone="primary">
+                    <div className="text-base font-medium text-[color:var(--aot-text)]">
+                        Puis choisir un seul flux N4 mesurable, avec sponsor et critères d&apos;arrêt.
+                    </div>
+                </IndustrialPanel>
             </div>
 
-            <div className="grid grid-cols-3 gap-5">
+            <div className="grid grid-rows-[1fr_auto] gap-4">
+                <div className="relative min-h-0 overflow-hidden rounded-[22px] border border-[color:var(--aot-border-subtle)]">
+                    <Image
+                        src="/generated/ai-pole-hub.png"
+                        alt="Illustration de trajectoire de pôle IA"
+                        fill
+                        className="object-cover"
+                        sizes="50vw"
+                    />
+                    <div className="absolute inset-0 bg-[linear-gradient(180deg,transparent_0%,rgba(0,0,0,0.55)_100%)]" />
+                </div>
+
+                <div className="grid grid-cols-3 gap-4">
                 {roadmap.map((item, index) => (
                     <IndustrialPanel
                         key={item.horizon}
@@ -417,25 +532,20 @@ export const RoadmapSlide = () => (
                         </div>
                     </IndustrialPanel>
                 ))}
-            </div>
-
-            <IndustrialPanel eyebrow="Decision attendue" title="Valider N3 comme standard AOT sur les projets pilotes" tone="primary">
-                <div className="text-base font-medium text-[color:var(--aot-text)]">
-                    Puis selectionner un seul flux N4 mesurable, avec sponsor et criteres d&apos;arret.
                 </div>
-            </IndustrialPanel>
+            </div>
         </div>
     </Slide>
 );
 
 export const QaSlide = () => (
-    <Slide slideKey={12} slideNumber={12} eyebrow="Q/R - 10 minutes">
-        <div className="grid h-full grid-cols-[1fr_1fr] gap-8">
+    <Slide slideKey={13} slideNumber={13} eyebrow="Questions / Décisions">
+        <div className="grid h-full grid-cols-[0.95fr_1.05fr] gap-8">
             <div className="flex flex-col justify-between">
                 <div>
-                    <div className="industrial-kicker">Questions / Reponses</div>
+                    <div className="industrial-kicker">Clôture</div>
                     <h2 className="font-display mt-4 text-7xl font-semibold leading-[0.92] tracking-[-0.07em] text-[color:var(--aot-text)]">
-                        Ce qu&apos;il faut decider maintenant.
+                        Ce qu&apos;il faut décider maintenant.
                     </h2>
                 </div>
 
@@ -449,6 +559,17 @@ export const QaSlide = () => (
                     <IndustrialPanel eyebrow="10 min" title="Q/R" tone="signal">
                         <UsersRound size={20} className="text-[color:var(--aot-signal-hi)]" />
                     </IndustrialPanel>
+                </div>
+
+                <div className="relative min-h-[13rem] overflow-hidden rounded-[22px] border border-[color:var(--aot-border-subtle)]">
+                    <Image
+                        src="/generated/ai-industrial-hero.png"
+                        alt="Illustration de décisions IA industrielles"
+                        fill
+                        className="object-cover"
+                        sizes="42vw"
+                    />
+                    <div className="absolute inset-0 bg-[linear-gradient(180deg,transparent_0%,rgba(0,0,0,0.58)_100%)]" />
                 </div>
             </div>
 
