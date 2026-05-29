@@ -37,7 +37,7 @@ const SUMMARY: SummaryItem[] = [
     },
     {
         part: 3,
-        title: "D2R2",
+        title: "RMC",
         detail: "Prouver le terrain",
         icon: Bot,
         tone: "accent",
@@ -101,7 +101,7 @@ const SummarySlide = () => {
                         <div className="liquid-pill rounded-2xl px-4 py-3 text-center">
                             <div className="industrial-kicker">preuve</div>
                             <div className="mt-1 text-2xl font-semibold text-[color:var(--aot-text)]">
-                                D2R2
+                                RMC
                             </div>
                         </div>
                     </div>

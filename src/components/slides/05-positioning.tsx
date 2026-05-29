@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import { ArrowUpRight, Milestone, ShieldAlert } from "lucide-react";
 import { Slide } from "@/components/deck/Slide";
 import { IndustrialPanel } from "@/components/shared/IndustrialPanel";
@@ -11,99 +12,83 @@ const rows = [
         from: 2 as const,
         to: 2 as const,
         tone: "neutral" as const,
-        note: "Assistant majoritaire",
+        note: "Assistance locale dominante",
     },
     {
         label: "Marché crédible",
         from: 2 as const,
         to: 3 as const,
         tone: "accent" as const,
-        note: "Le centre de gravité glisse vers N3",
+        note: "Les équipes avancées basculent vers N3",
     },
     {
-        label: "Référence avancée type EDF",
-        from: 3 as const,
-        to: 4 as const,
-        tone: "signal" as const,
-        note: "L'écart se crée sur l'orchestration",
-    },
-    {
-        label: "AOT cible · 12 mois",
+        label: "AOT cible 12 mois",
         from: 3 as const,
         to: 3 as const,
         tone: "primary" as const,
-        note: "N3 standardisé",
+        note: "Agent guidé comme standard projet",
     },
     {
-        label: "AOT cible · 24 mois",
+        label: "AOT cible 24 mois",
         from: 4 as const,
         to: 4 as const,
-        tone: "primary" as const,
-        note: "N4 ciblé",
+        tone: "signal" as const,
+        note: "N4 seulement sur flux gouvernés",
     },
 ];
 
 const PositioningSlide = () => {
     return (
-        <Slide slideKey={5} slideNumber={5} eyebrow="Partie 1 · Contexte">
-            <div className="grid h-full grid-rows-[auto_1fr_auto] gap-6">
-                <div className="max-w-5xl">
-                    <div className="industrial-kicker">Positionnement</div>
-                    <h2 className="font-display mt-4 text-6xl font-semibold tracking-[-0.06em] text-[color:var(--aot-text)]">
-                        Où en est AOT, et où devons-nous être ?
-                    </h2>
-                    <p className="mt-5 text-xl text-[color:var(--aot-text-muted)]">
-                        La bonne marche n&apos;est ni prudente ni spectaculaire. Elle est utile.
-                    </p>
-                </div>
+        <Slide slideKey={4} slideNumber={4} eyebrow="Partie 2 / Positionnement">
+            <div className="grid h-full grid-cols-[0.9fr_1.1fr] gap-7">
+                <div className="flex flex-col justify-between gap-5">
+                    <div>
+                        <div className="industrial-kicker">Positionnement</div>
+                        <h2 className="font-display mt-4 text-6xl font-semibold leading-[0.96] tracking-[-0.06em] text-[color:var(--aot-text)]">
+                            AOT doit stabiliser N3 avant de vendre N4.
+                        </h2>
+                    </div>
 
-                <div className="grid grid-cols-[0.82fr_1.18fr] gap-6">
-                    <div className="grid gap-5">
-                        <IndustrialPanel eyebrow="Cap" title="Le prochain saut sain: N3" tone="primary">
-                            <div className="flex items-center gap-4">
-                                <div className="rounded-2xl border border-[rgba(23,229,23,0.2)] bg-[rgba(23,229,23,0.08)] p-4 text-[color:var(--aot-primary-hi)]">
-                                    <Milestone size={22} />
-                                </div>
-                                <div className="text-base font-medium text-[color:var(--aot-text)]">
-                                    Normaliser la délégation supervisée avant de promettre N4.
-                                </div>
+                    <div className="relative min-h-[15rem] overflow-hidden rounded-[22px] border border-[color:var(--aot-border-subtle)]">
+                        <Image
+                            src="/generated/ai-maturity-levels.png"
+                            alt="Positionnement AOT sur les niveaux de maturité IA"
+                            fill
+                            className="object-cover"
+                            sizes="40vw"
+                        />
+                        <div className="absolute inset-0 bg-[linear-gradient(180deg,transparent_0%,rgba(0,0,0,0.58)_100%)]" />
+                        <div className="absolute bottom-4 left-4 right-4">
+                            <div className="industrial-kicker text-white/70">Cap sain</div>
+                            <div className="mt-1 text-2xl font-semibold text-white">
+                                N3 robuste / N4 ciblé
+                            </div>
+                        </div>
+                    </div>
+
+                    <div className="grid grid-cols-2 gap-4">
+                        <IndustrialPanel eyebrow="Cap" title="Standardiser N3" tone="primary">
+                            <div className="flex items-center gap-3 text-sm font-medium text-[color:var(--aot-text)]">
+                                <Milestone size={17} />
+                                <span>Prompt / plan / patch / test / revue</span>
                             </div>
                         </IndustrialPanel>
-
-                        <IndustrialPanel eyebrow="Risque" title="Deux erreurs à éviter" tone="signal">
-                            <div className="grid gap-3">
-                                <div className="liquid-pill rounded-2xl px-4 py-3 text-sm text-[color:var(--aot-text)]">
-                                    1. Rester confortablement en N2
-                                </div>
-                                <div className="liquid-pill rounded-2xl px-4 py-3 text-sm text-[color:var(--aot-text)]">
-                                    2. Vendre du N4 sans gouvernance
-                                </div>
+                        <IndustrialPanel eyebrow="Risque" title="Sauter trop vite" tone="signal">
+                            <div className="flex items-center gap-3 text-sm font-medium text-[color:var(--aot-text)]">
+                                <ShieldAlert size={17} />
+                                <span>N4 sans gates = dette de contrôle</span>
                             </div>
                         </IndustrialPanel>
                     </div>
-
-                    <MaturityPositioningBoard rows={rows} />
                 </div>
 
-                <div className="grid grid-cols-3 gap-4">
-                    <IndustrialPanel eyebrow="Court terme" title="Stabiliser la pratique">
-                        <div className="flex items-center gap-3 text-sm font-medium text-[color:var(--aot-text)]">
-                            <ArrowUpRight size={16} />
-                            <span>Prompt · plan · patch · test · revue</span>
-                        </div>
-                    </IndustrialPanel>
+                <div className="flex flex-col justify-between gap-5">
+                    <MaturityPositioningBoard rows={rows} className="min-h-0 flex-1" />
 
-                    <IndustrialPanel eyebrow="Moyen terme" title="Choisir les flux N4" tone="accent">
-                        <div className="flex items-center gap-3 text-sm font-medium text-[color:var(--aot-text)]">
-                            <ArrowUpRight size={16} />
-                            <span>Seulement là où les gates ont du levier</span>
-                        </div>
-                    </IndustrialPanel>
-
-                    <IndustrialPanel eyebrow="Gouvernance" title="Créer une capacité transverse" tone="signal">
-                        <div className="flex items-center gap-3 text-sm font-medium text-[color:var(--aot-text)]">
-                            <ShieldAlert size={16} />
-                            <span>Le sujet doit dépasser les initiatives individuelles</span>
+                    <IndustrialPanel eyebrow="Message public" title="La maturité IA est une pratique, pas une licence outil." tone="accent">
+                        <div className="flex items-center gap-3 text-base font-medium text-[color:var(--aot-text)]">
+                            <ArrowUpRight size={18} />
+                            <span>Le vrai différenciant: cadrer, vérifier, capitaliser.</span>
                         </div>
                     </IndustrialPanel>
                 </div>

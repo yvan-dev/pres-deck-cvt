@@ -5,12 +5,12 @@ import PositioningSlide from "@/components/slides/05-positioning";
 import MaturitySlide from "@/components/slides/06-maturity";
 import {
     AiPoleSlide,
-    D2R2ProofSlide,
     DemoBriefingSlide,
     GovernanceSlide,
     IndustrialNarrativeMap,
     OperatingModelSlide,
     QaSlide,
+    RmcProofSlide,
     RoadmapSlide,
     SpeechTimingSlide,
 } from "@/components/slides/industrial-refresh";
@@ -73,8 +73,8 @@ export const SLIDES: SlideMeta[] = [
         id: 6,
         part: 3,
         partLabel: PARTS[3],
-        title: "D2R2 comme preuve terrain",
-        component: D2R2ProofSlide,
+        title: "RMC comme preuve terrain",
+        component: RmcProofSlide,
     },
     {
         id: 7,

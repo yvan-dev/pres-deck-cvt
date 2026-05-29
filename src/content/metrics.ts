@@ -1,6 +1,6 @@
 /**
  * Métriques chiffrées — source unique.
- * Estimations sourcées sur le workflow agentique D2R2 et études marché publiques.
+ * Estimations sourcées sur le workflow agentique RMC et études marché publiques.
  * À affiner quand les chiffres réels seront disponibles.
  */
 
@@ -56,12 +56,12 @@ export const MARKET_METRICS: Metric[] = [
     },
 ];
 
-export const D2R2_METRICS: Metric[] = [
+export const RMC_METRICS: Metric[] = [
     {
         id: "beads-created",
         label: "Beads créés sur la période",
         value: "~70",
-        source: "Kanban D2R2 — estimation visible",
+        source: "Kanban RMC — estimation visible",
         isEstimate: true,
     },
     {

@@ -38,7 +38,7 @@ export const metadata: Metadata = {
         "Claude Code",
         "ACTON Technology",
         "AOT",
-        "D2R2",
+        "RMC",
         "BMAD",
         "LangGraph",
     ],

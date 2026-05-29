@@ -24,7 +24,7 @@ import {
 } from "lucide-react";
 import { Slide } from "@/components/deck/Slide";
 import { IndustrialPanel } from "@/components/shared/IndustrialPanel";
-import { D2R2_METRICS } from "@/content/metrics";
+import { RMC_METRICS } from "@/content/metrics";
 
 const workflow = [
     { label: "Intent", detail: "besoin metier + contrainte", icon: Radar },
@@ -127,61 +127,82 @@ const levelPrimer = [
     },
 ];
 
-export const D2R2ProofSlide = () => (
-    <Slide slideKey={6} slideNumber={6} eyebrow="Partie 3 - Preuve terrain">
-        <div className="grid h-full grid-cols-[0.9fr_1.1fr] gap-7">
+export const RmcProofSlide = () => (
+    <Slide slideKey={6} slideNumber={6} eyebrow="Partie 3 / Preuve terrain">
+        <div className="grid h-full grid-cols-[0.92fr_1.08fr] gap-7">
             <div className="flex flex-col justify-between">
                 <div>
-                    <div className="industrial-kicker">D2R2</div>
+                    <div className="industrial-kicker">RMC</div>
                     <h2 className="font-display mt-4 text-6xl font-semibold leading-[0.96] tracking-[-0.06em] text-[color:var(--aot-text)]">
-                        La preuve n&apos;est pas theorique.
+                        La preuve n&apos;est pas théorique.
                     </h2>
                     <p className="mt-5 max-w-xl text-xl leading-relaxed text-[color:var(--aot-text-muted)]">
-                        Le workflow agentique a deja servi a livrer. Le sujet est
-                        maintenant de rendre cette pratique reproductible.
+                        Le workflow agentique a déjà servi à livrer. Le sujet est maintenant de rendre cette pratique reproductible.
                     </p>
                 </div>
 
                 <IndustrialPanel eyebrow="Message" title="N3 est le prochain standard de delivery" tone="primary">
                     <div className="text-base font-medium text-[color:var(--aot-text)]">
-                        Un agent bien cadre produit un plan, un patch et une preuve de validation.
+                        Un agent bien cadré produit un plan, un patch et une preuve de validation.
                     </div>
                 </IndustrialPanel>
             </div>
 
-            <div className="grid grid-cols-2 gap-4">
-                {D2R2_METRICS.slice(0, 6).map((metric, index) => (
-                    <IndustrialPanel
-                        key={metric.id}
-                        eyebrow={metric.isEstimate ? "Estimation" : "Mesure"}
-                        title={metric.value}
-                        tone={index === 0 || index === 2 ? "primary" : index === 3 ? "signal" : "neutral"}
-                        className="justify-between"
-                    >
-                        <div className="text-sm font-medium leading-relaxed text-[color:var(--aot-text-muted)]">
-                            {metric.label}
+            <div className="grid min-h-0 grid-rows-[1fr_auto] gap-4">
+                <div className="relative min-h-0 overflow-hidden rounded-[22px] border border-[color:var(--aot-border-subtle)]">
+                    <Image
+                        src="/generated/rmc-proof.png"
+                        alt="Illustration de preuve terrain RMC"
+                        fill
+                        className="object-cover"
+                        sizes="52vw"
+                    />
+                    <div className="absolute inset-0 bg-[linear-gradient(180deg,transparent_0%,rgba(0,0,0,0.52)_100%)]" />
+                    <div className="absolute bottom-4 left-4 right-4">
+                        <div className="industrial-kicker text-white/70">Flux visible</div>
+                        <div className="mt-1 text-2xl font-semibold text-white">
+                            demande / plan / patch / validation
                         </div>
-                    </IndustrialPanel>
-                ))}
+                    </div>
+                </div>
+
+                <div className="grid grid-cols-4 gap-3">
+                    {RMC_METRICS.slice(0, 4).map((metric, index) => (
+                        <IndustrialPanel
+                            key={metric.id}
+                            eyebrow={metric.isEstimate ? "Estimation" : "Mesure"}
+                            title={metric.value}
+                            tone={index === 0 || index === 2 ? "primary" : index === 3 ? "signal" : "neutral"}
+                            className="gap-2 p-4"
+                        >
+                            <div className="text-xs font-medium leading-relaxed text-[color:var(--aot-text-muted)]">
+                                {metric.label}
+                            </div>
+                        </IndustrialPanel>
+                    ))}
+                </div>
             </div>
         </div>
     </Slide>
 );
 
 export const OperatingModelSlide = () => (
-    <Slide slideKey={7} slideNumber={7} eyebrow="Partie 3 - Mode operatoire">
-        <div className="grid h-full grid-rows-[auto_1fr_auto] gap-6">
-            <div className="max-w-5xl">
-                <div className="industrial-kicker">Industrialiser N3</div>
-                <h2 className="font-display mt-4 text-6xl font-semibold tracking-[-0.06em] text-[color:var(--aot-text)]">
-                    Le process doit encadrer l&apos;agent.
-                </h2>
-                <p className="mt-5 text-xl text-[color:var(--aot-text-muted)]">
-                    On ne deploie pas un outil. On deploie une facon de travailler.
-                </p>
+    <Slide slideKey={7} slideNumber={7} eyebrow="Partie 3 / Mode opératoire">
+        <div className="grid h-full grid-rows-[auto_1fr_auto] gap-5">
+            <div className="flex items-end justify-between gap-8">
+                <div className="max-w-5xl">
+                    <div className="industrial-kicker">Industrialiser N3</div>
+                    <h2 className="font-display mt-4 text-6xl font-semibold tracking-[-0.06em] text-[color:var(--aot-text)]">
+                        Le process doit encadrer l&apos;agent.
+                    </h2>
+                </div>
+                <div className="hidden max-w-md text-right text-lg leading-relaxed text-[color:var(--aot-text-muted)] xl:block">
+                    On déploie une façon de travailler, pas seulement un outil.
+                </div>
             </div>
 
-            <div className="grid grid-cols-4 gap-4">
+            <div className="grid min-h-0 grid-cols-[1.05fr_0.95fr] gap-5">
+                <div className="grid grid-cols-2 gap-4">
                 {workflow.map((item, index) => {
                     const Icon = item.icon;
 
@@ -208,6 +229,24 @@ export const OperatingModelSlide = () => (
                         </div>
                     );
                 })}
+                </div>
+
+                <div className="relative min-h-0 overflow-hidden rounded-[22px] border border-[color:var(--aot-border-subtle)]">
+                    <Image
+                        src="/generated/agent-workflow.png"
+                        alt="Illustration du workflow agentique supervisé"
+                        fill
+                        className="object-cover"
+                        sizes="44vw"
+                    />
+                    <div className="absolute inset-0 bg-[linear-gradient(180deg,transparent_0%,rgba(0,0,0,0.55)_100%)]" />
+                    <div className="absolute bottom-4 left-4 right-4">
+                        <div className="industrial-kicker text-white/70">Principe</div>
+                        <div className="mt-1 text-2xl font-semibold text-white">
+                            L&apos;agent agit / l&apos;humain arbitre
+                        </div>
+                    </div>
+                </div>
             </div>
 
             <div className="grid grid-cols-3 gap-4">
@@ -220,49 +259,50 @@ export const OperatingModelSlide = () => (
 );
 
 export const GovernanceSlide = () => (
-    <Slide slideKey={8} slideNumber={8} eyebrow="Partie 4 - N4 cible">
-        <div className="grid h-full grid-cols-[1fr_1fr] gap-7">
+    <Slide slideKey={8} slideNumber={8} eyebrow="Partie 4 / N4 cible">
+        <div className="grid h-full grid-cols-[0.92fr_1.08fr] gap-7">
             <div className="flex flex-col justify-between">
                 <div>
                     <div className="industrial-kicker">BMAD / LangGraph</div>
                     <h2 className="font-display mt-4 text-6xl font-semibold leading-[0.96] tracking-[-0.06em] text-[color:var(--aot-text)]">
-                        N4 uniquement la ou les gates ont du levier.
+                        N4 uniquement là où les gates ont du levier.
                     </h2>
                     <p className="mt-5 max-w-2xl text-xl leading-relaxed text-[color:var(--aot-text-muted)]">
-                        L&apos;objectif n&apos;est pas l&apos;autonomie maximale. C&apos;est le controle
-                        explicite des flux qui meritent une orchestration.
+                        L&apos;objectif n&apos;est pas l&apos;autonomie maximale. C&apos;est le contrôle explicite des flux qui méritent une orchestration.
                     </p>
                 </div>
 
-                <IndustrialPanel eyebrow="Decision" title="Piloter un seul workflow N4 avant generalisation" tone="signal">
+                <IndustrialPanel eyebrow="Décision" title="Piloter un seul workflow N4 avant généralisation" tone="signal">
                     <div className="text-base font-medium text-[color:var(--aot-text)]">
-                        Un flux candidat: spec - implementation - review - release notes.
+                        Un flux candidat: spécification / implémentation / review / release notes.
                     </div>
                 </IndustrialPanel>
             </div>
 
-            <div className="grid grid-cols-2 gap-4">
-                <IndustrialPanel eyebrow="BMAD" title="Roles explicites" tone="primary">
-                    <div className="text-sm leading-relaxed text-[color:var(--aot-text-muted)]">
-                        Analyste, PM, architecte, dev et QA deviennent des responsabilites
-                        separees dans le flux.
+            <div className="grid min-h-0 grid-rows-[1fr_auto] gap-4">
+                <div className="relative min-h-0 overflow-hidden rounded-[22px] border border-[color:var(--aot-border-subtle)]">
+                    <Image
+                        src="/generated/agent-workflow.png"
+                        alt="Illustration d'orchestration avec gates de validation"
+                        fill
+                        className="object-cover"
+                        sizes="50vw"
+                    />
+                    <div className="absolute inset-0 bg-[linear-gradient(180deg,transparent_0%,rgba(0,0,0,0.55)_100%)]" />
+                    <div className="absolute bottom-4 left-4 right-4">
+                        <div className="industrial-kicker text-white/70">N4 utile</div>
+                        <div className="mt-1 text-2xl font-semibold text-white">
+                            orchestration / traces / reprise
+                        </div>
                     </div>
-                </IndustrialPanel>
-                <IndustrialPanel eyebrow="LangGraph" title="Gates observables" tone="accent">
-                    <div className="text-sm leading-relaxed text-[color:var(--aot-text-muted)]">
-                        Chaque transition produit un etat, une preuve et un point de reprise.
-                    </div>
-                </IndustrialPanel>
-                <IndustrialPanel eyebrow="Humain" title="Validation critique">
-                    <div className="text-sm leading-relaxed text-[color:var(--aot-text-muted)]">
-                        L&apos;humain intervient aux decisions, pas a chaque micro-action.
-                    </div>
-                </IndustrialPanel>
-                <IndustrialPanel eyebrow="Risque" title="Stopper la derive" tone="signal">
-                    <div className="text-sm leading-relaxed text-[color:var(--aot-text-muted)]">
-                        Logs, budgets, rollback et limites d&apos;action sont non negociables.
-                    </div>
-                </IndustrialPanel>
+                </div>
+
+                <div className="grid grid-cols-4 gap-3">
+                    <IndustrialPanel eyebrow="BMAD" title="Rôles" tone="primary" className="p-4" />
+                    <IndustrialPanel eyebrow="LangGraph" title="Gates" tone="accent" className="p-4" />
+                    <IndustrialPanel eyebrow="Humain" title="Arbitrage" className="p-4" />
+                    <IndustrialPanel eyebrow="Risque" title="Rollback" tone="signal" className="p-4" />
+                </div>
             </div>
         </div>
     </Slide>

@@ -107,7 +107,7 @@ export const MATURITY_LEVELS: MaturityLevel[] = [
             "Gain 2-5× sur les tâches bien cadrées",
         ],
         weakSignal:
-            "« Sur D2R2, on livre des features en quelques heures là où il fallait des jours »",
+            "« Sur RMC, on livre des features en quelques heures là où il fallait des jours »",
         horizon: "short-term",
         isShortTermTarget: true,
         accentColor: "primary",
