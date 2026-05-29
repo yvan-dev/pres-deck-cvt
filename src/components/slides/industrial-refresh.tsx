@@ -577,7 +577,7 @@ export const QaSlide = () => (
                 {[
                     { icon: Target, title: "Adopter N3", detail: "comme pratique standard sur les projets pilotes" },
                     { icon: ShieldCheck, title: "Encadrer N4", detail: "sur un workflow choisi, avec gates et traces" },
-                    { icon: CheckCircle2, title: "Mandater le pole IA", detail: "pour standards, enablement, outillage et gouvernance" },
+                    { icon: CheckCircle2, title: "Mandater le pôle IA", detail: "pour standards, enablement, outillage et gouvernance" },
                 ].map((item, index) => {
                     const Icon = item.icon;
 
