@@ -6,7 +6,7 @@ type IndustrialPanelProps = {
     eyebrow?: string;
     tone?: "neutral" | "primary" | "accent" | "signal";
     className?: string;
-    children: ReactNode;
+    children?: ReactNode;
 };
 
 const TONE_CLASS: Record<NonNullable<IndustrialPanelProps["tone"]>, string> = {
@@ -41,7 +41,7 @@ export const IndustrialPanel = ({
                     ) : null}
                 </div>
             )}
-            {children}
+            {children ?? null}
         </section>
     );
 };

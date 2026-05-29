@@ -1,14 +1,21 @@
 import type { ComponentType } from "react";
 
 import CoverSlide from "@/components/slides/01-cover";
-import SummarySlide from "@/components/slides/02-summary";
-import WhoAmISlide from "@/components/slides/03-whoami";
-import ConstatSlide from "@/components/slides/04-constat";
 import PositioningSlide from "@/components/slides/05-positioning";
 import MaturitySlide from "@/components/slides/06-maturity";
-import { makePlaceholderSlide } from "@/components/slides/placeholder";
+import {
+    AiPoleSlide,
+    D2R2ProofSlide,
+    DemoBriefingSlide,
+    GovernanceSlide,
+    IndustrialNarrativeMap,
+    OperatingModelSlide,
+    QaSlide,
+    RoadmapSlide,
+    SpeechTimingSlide,
+} from "@/components/slides/industrial-refresh";
 
-export type PartId = 1 | 2 | 3 | 4 | 5 | 6 | 7;
+export type PartId = 1 | 2 | 3 | 4 | 5;
 
 export type SlideMeta = {
     id: number;
@@ -20,58 +27,95 @@ export type SlideMeta = {
 
 export const PARTS: Record<PartId, string> = {
     1: "Contexte",
-    2: "Maturité",
-    3: "D2R2",
-    4: "BMAD/LG",
-    5: "Pôle IA",
-    6: "Démo",
-    7: "Clôture",
+    2: "Maturite",
+    3: "Preuve",
+    4: "Industrialisation",
+    5: "Demo + decisions",
 };
 
 export const SLIDES: SlideMeta[] = [
-    { id: 1, part: 1, partLabel: PARTS[1], title: "Le développement agentique à AOT", component: CoverSlide },
-    { id: 2, part: 1, partLabel: PARTS[1], title: "Sommaire", component: SummarySlide },
-    { id: 3, part: 1, partLabel: PARTS[1], title: "Qui je suis", component: WhoAmISlide },
-    { id: 4, part: 1, partLabel: PARTS[1], title: "Le constat — ce qui a changé en 18 mois", component: ConstatSlide },
-    { id: 5, part: 1, partLabel: PARTS[1], title: "Où en est AOT ? Où devrait-on être ?", component: PositioningSlide },
-
-    { id: 6, part: 2, partLabel: PARTS[2], title: "Vue d'ensemble — 5 niveaux de maturité", component: MaturitySlide },
-    { id: 7, part: 2, partLabel: PARTS[2], title: "N1 — Chat", component: makePlaceholderSlide(7, 2, "N1 — Chat") },
-    { id: 8, part: 2, partLabel: PARTS[2], title: "N2 — Copilote", component: makePlaceholderSlide(8, 2, "N2 — Copilote") },
-    { id: 9, part: 2, partLabel: PARTS[2], title: "N3 — Agent guidé", component: makePlaceholderSlide(9, 2, "N3 — Agent guidé") },
-    { id: 10, part: 2, partLabel: PARTS[2], title: "Zoom N3 : les outils", component: makePlaceholderSlide(10, 2, "Zoom N3 : les outils") },
-    { id: 11, part: 2, partLabel: PARTS[2], title: "Zoom N3 : les pratiques", component: makePlaceholderSlide(11, 2, "Zoom N3 : les pratiques") },
-    { id: 12, part: 2, partLabel: PARTS[2], title: "N4 — Human in the Loop", component: makePlaceholderSlide(12, 2, "N4 — Human in the Loop") },
-    { id: 13, part: 2, partLabel: PARTS[2], title: "Zoom N4 : BMAD + LangGraph", component: makePlaceholderSlide(13, 2, "Zoom N4 : BMAD + LangGraph") },
-    { id: 14, part: 2, partLabel: PARTS[2], title: "N5 — Swarm", component: makePlaceholderSlide(14, 2, "N5 — Swarm") },
-    { id: 15, part: 2, partLabel: PARTS[2], title: "Positionnement — Marché / EDF / AOT / Cibles", component: makePlaceholderSlide(15, 2, "Positionnement — Marché / EDF / AOT / Cibles") },
-
-    { id: 16, part: 3, partLabel: PARTS[3], title: "D2R2 en 1 slide", component: makePlaceholderSlide(16, 3, "D2R2 en 1 slide") },
-    { id: 17, part: 3, partLabel: PARTS[3], title: "Workflow mis en place", component: makePlaceholderSlide(17, 3, "Workflow mis en place") },
-    { id: 18, part: 3, partLabel: PARTS[3], title: "Diagramme — du ticket au PR", component: makePlaceholderSlide(18, 3, "Diagramme — du ticket au PR") },
-    { id: 19, part: 3, partLabel: PARTS[3], title: "Exemple réel : un bead", component: makePlaceholderSlide(19, 3, "Exemple réel : un bead") },
-    { id: 20, part: 3, partLabel: PARTS[3], title: "Exemple réel : un plan d'implémentation", component: makePlaceholderSlide(20, 3, "Exemple réel : un plan d'implémentation") },
-    { id: 21, part: 3, partLabel: PARTS[3], title: "Exemple réel : un recap + LEARNED", component: makePlaceholderSlide(21, 3, "Exemple réel : un recap + LEARNED") },
-    { id: 22, part: 3, partLabel: PARTS[3], title: "Métriques D2R2", component: makePlaceholderSlide(22, 3, "Métriques D2R2") },
-    { id: 23, part: 3, partLabel: PARTS[3], title: "Apprentissages clés", component: makePlaceholderSlide(23, 3, "Apprentissages clés") },
-
-    { id: 24, part: 4, partLabel: PARTS[4], title: "Pourquoi N4 ?", component: makePlaceholderSlide(24, 4, "Pourquoi N4 ?") },
-    { id: 25, part: 4, partLabel: PARTS[4], title: "BMAD en 1 schéma", component: makePlaceholderSlide(25, 4, "BMAD en 1 schéma") },
-    { id: 26, part: 4, partLabel: PARTS[4], title: "LangGraph : validation gates", component: makePlaceholderSlide(26, 4, "LangGraph : validation gates") },
-    { id: 27, part: 4, partLabel: PARTS[4], title: "Exemple concret de workflow", component: makePlaceholderSlide(27, 4, "Exemple concret de workflow") },
-    { id: 28, part: 4, partLabel: PARTS[4], title: "Retours d'expérience", component: makePlaceholderSlide(28, 4, "Retours d'expérience") },
-
-    { id: 29, part: 5, partLabel: PARTS[5], title: "Pourquoi un pôle IA maintenant", component: makePlaceholderSlide(29, 5, "Pourquoi un pôle IA maintenant") },
-    { id: 30, part: 5, partLabel: PARTS[5], title: "Mission & positionnement", component: makePlaceholderSlide(30, 5, "Mission & positionnement") },
-    { id: 31, part: 5, partLabel: PARTS[5], title: "Les 4 piliers", component: makePlaceholderSlide(31, 5, "Les 4 piliers") },
-    { id: 32, part: 5, partLabel: PARTS[5], title: "Roadmap T0 → T+12 mois", component: makePlaceholderSlide(32, 5, "Roadmap T0 → T+12 mois") },
-    { id: 33, part: 5, partLabel: PARTS[5], title: "KPIs & mesures de succès", component: makePlaceholderSlide(33, 5, "KPIs & mesures de succès") },
-    { id: 34, part: 5, partLabel: PARTS[5], title: "Comment rejoindre / contribuer", component: makePlaceholderSlide(34, 5, "Comment rejoindre / contribuer") },
-
-    { id: 35, part: 6, partLabel: PARTS[6], title: "Transition démo", component: makePlaceholderSlide(35, 6, "Transition démo") },
-    { id: 36, part: 6, partLabel: PARTS[6], title: "Démo live Claude Code", component: makePlaceholderSlide(36, 6, "Démo live Claude Code") },
-    { id: 37, part: 6, partLabel: PARTS[6], title: "Retour démo", component: makePlaceholderSlide(37, 6, "Retour démo") },
-
-    { id: 38, part: 7, partLabel: PARTS[7], title: "Prochaines étapes + appel à action", component: makePlaceholderSlide(38, 7, "Prochaines étapes + appel à action") },
-    { id: 39, part: 7, partLabel: PARTS[7], title: "Q&A + ressources + contact", component: makePlaceholderSlide(39, 7, "Q&A + ressources + contact") },
+    {
+        id: 1,
+        part: 1,
+        partLabel: PARTS[1],
+        title: "Le developpement agentique a AOT",
+        component: CoverSlide,
+    },
+    {
+        id: 2,
+        part: 1,
+        partLabel: PARTS[1],
+        title: "Format 15 / 15 / 10",
+        component: SpeechTimingSlide,
+    },
+    {
+        id: 3,
+        part: 1,
+        partLabel: PARTS[1],
+        title: "L'IA devient une unite d'execution",
+        component: IndustrialNarrativeMap,
+    },
+    {
+        id: 4,
+        part: 2,
+        partLabel: PARTS[2],
+        title: "Positionnement AOT et cible",
+        component: PositioningSlide,
+    },
+    {
+        id: 5,
+        part: 2,
+        partLabel: PARTS[2],
+        title: "Les 5 niveaux de maturite IA",
+        component: MaturitySlide,
+    },
+    {
+        id: 6,
+        part: 3,
+        partLabel: PARTS[3],
+        title: "D2R2 comme preuve terrain",
+        component: D2R2ProofSlide,
+    },
+    {
+        id: 7,
+        part: 3,
+        partLabel: PARTS[3],
+        title: "Mode operatoire N3",
+        component: OperatingModelSlide,
+    },
+    {
+        id: 8,
+        part: 4,
+        partLabel: PARTS[4],
+        title: "N4 via BMAD et LangGraph",
+        component: GovernanceSlide,
+    },
+    {
+        id: 9,
+        part: 4,
+        partLabel: PARTS[4],
+        title: "Pole IA transverse",
+        component: AiPoleSlide,
+    },
+    {
+        id: 10,
+        part: 5,
+        partLabel: PARTS[5],
+        title: "Briefing demo live",
+        component: DemoBriefingSlide,
+    },
+    {
+        id: 11,
+        part: 5,
+        partLabel: PARTS[5],
+        title: "Roadmap 90 jours",
+        component: RoadmapSlide,
+    },
+    {
+        id: 12,
+        part: 5,
+        partLabel: PARTS[5],
+        title: "Questions et decisions",
+        component: QaSlide,
+    },
 ];
