@@ -11,19 +11,19 @@ export const SlideProgress = () => {
     const currentSlide = SLIDES[current];
 
     return (
-        <div className="liquid-dock flex items-center gap-4 px-4 py-2.5">
-            <span className="liquid-pill rounded-full px-3 py-1.5 font-mono text-[0.68rem] uppercase tracking-[0.16em] text-[color:var(--aot-text-muted)]">
-                P{currentSlide.part} · {currentSlide.partLabel}
+        <div className="deck-progress flex items-center gap-3 px-3.5 py-2">
+            <span className="deck-progress__part rounded-full px-2.5 py-1 font-mono text-[0.62rem] uppercase text-[color:var(--aot-text-muted)]">
+                P{currentSlide.part} / {currentSlide.partLabel}
             </span>
 
-            <div className="hidden min-w-0 flex-1 items-center gap-3 lg:flex">
+            <div className="hidden min-w-0 flex-1 items-center gap-2.5 lg:flex">
                 {PARTS.map((part) => (
                     <span
                         key={part}
-                        className={`h-1.5 w-7 rounded-full ${
+                        className={`h-1 w-8 rounded-full transition-colors ${
                             part === currentSlide.part
                                 ? "bg-[color:var(--aot-primary)]"
-                                : "bg-[rgba(255,255,255,0.08)]"
+                                : "bg-[color:var(--aot-track)]"
                         }`}
                     />
                 ))}
@@ -34,14 +34,14 @@ export const SlideProgress = () => {
             </div>
 
             <div className="flex items-center gap-3">
-                <div className="liquid-pill h-2 w-28 overflow-hidden rounded-full bg-[rgba(255,255,255,0.06)] p-[2px]">
+                <div className="h-1.5 w-24 overflow-hidden rounded-full bg-[color:var(--aot-track)]">
                     <div
-                        className="h-full rounded-full bg-[color:var(--aot-primary)] shadow-[0_0_18px_rgba(23,229,23,0.35)] transition-[width] duration-300 ease-out"
+                        className="h-full rounded-full bg-[color:var(--aot-primary)] transition-[width] duration-300 ease-out"
                         style={{ width: `${percent}%` }}
                     />
                 </div>
 
-                <span className="font-mono text-[0.72rem] uppercase tracking-[0.16em] text-[color:var(--aot-text-dim)]">
+                <span className="font-mono text-[0.66rem] uppercase text-[color:var(--aot-text-dim)]">
                     {String(current + 1).padStart(2, "0")} / {String(total).padStart(2, "0")}
                 </span>
             </div>

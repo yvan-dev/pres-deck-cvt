@@ -92,14 +92,14 @@ const DeckInner = () => {
                 </div>
             </div>
 
-            <div className="pointer-events-none absolute right-[calc(50vw-min(50vw-1.1rem,(100vh-6.4rem)*8/9)+1rem)] top-[1rem] z-30">
-                <ThemeToggle />
-            </div>
-
             <div
-                className="pointer-events-none absolute bottom-[0.6rem] left-1/2 z-20 w-[calc(100vw-3rem)] max-w-[calc((100vh-6.4rem)*16/9)] -translate-x-1/2"
+                className="pointer-events-none absolute bottom-[0.85rem] left-1/2 z-20 w-[calc(100vw-7rem)] max-w-[calc((100vh-6.4rem)*16/9-4rem)] -translate-x-1/2"
             >
                 <SlideProgress />
+            </div>
+
+            <div className="pointer-events-none absolute bottom-[0.85rem] right-[1.25rem] z-30">
+                <ThemeToggle />
             </div>
 
             <SlideOverview />

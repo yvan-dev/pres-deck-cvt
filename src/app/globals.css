@@ -53,6 +53,7 @@
     --aot-track: rgba(255, 255, 255, 0.08);
     --aot-rule: rgba(255, 255, 255, 0.14);
     --aot-logo-bg: rgba(255, 255, 255, 0.08);
+    --aot-chip-bg: rgba(13, 19, 17, 0.88);
 }
 
 .light {
@@ -94,7 +95,8 @@
     --aot-icon-bg: rgba(23, 229, 23, 0.08);
     --aot-track: rgba(14, 48, 15, 0.11);
     --aot-rule: rgba(14, 48, 15, 0.14);
-    --aot-logo-bg: rgba(255, 255, 255, 0.88);
+    --aot-logo-bg: rgba(255, 255, 255, 0.9);
+    --aot-chip-bg: rgba(255, 255, 255, 0.88);
 }
 
 @theme inline {
@@ -345,6 +347,25 @@ body::after {
     pointer-events: none;
 }
 
+.deck-progress {
+    position: relative;
+    overflow: hidden;
+    border-radius: 999px;
+    border: 1px solid var(--aot-pill-border);
+    background: color-mix(in srgb, var(--aot-bg-panel) 82%, transparent);
+    backdrop-filter: blur(18px) saturate(150%);
+    -webkit-backdrop-filter: blur(18px) saturate(150%);
+    box-shadow:
+        0 12px 34px rgba(0, 0, 0, 0.22),
+        inset 0 1px 0 rgba(255, 255, 255, 0.08);
+}
+
+.deck-progress__part {
+    border: 1px solid var(--aot-pill-border);
+    background: color-mix(in srgb, var(--aot-pill-bg) 70%, transparent);
+    letter-spacing: 0.12em;
+}
+
 .liquid-pill {
     border: 1px solid var(--aot-pill-border);
     background: var(--aot-pill-bg);
@@ -394,7 +415,7 @@ body::after {
     gap: 0.5rem;
     border-radius: 999px;
     border: 1px solid var(--aot-border-subtle);
-    background: rgba(13, 19, 17, 0.82);
+    background: var(--aot-chip-bg);
     padding: 0.45rem 0.85rem;
     font-family: var(--font-mono), monospace;
     font-size: 0.66rem;
@@ -452,16 +473,17 @@ body::after {
 .theme-toggle {
     position: relative;
     display: inline-flex;
-    height: 2.35rem;
-    width: 4.75rem;
+    height: 1.85rem;
+    width: 3.35rem;
     align-items: center;
     border-radius: 999px;
     border: 1px solid var(--aot-pill-border);
     background: var(--aot-pill-bg);
-    padding: 0.18rem;
-    box-shadow: var(--aot-shadow-card);
-    backdrop-filter: blur(20px) saturate(170%);
-    -webkit-backdrop-filter: blur(20px) saturate(170%);
+    padding: 0.16rem;
+    opacity: 0.72;
+    box-shadow: 0 10px 26px rgba(0, 0, 0, 0.14);
+    backdrop-filter: blur(14px) saturate(145%);
+    -webkit-backdrop-filter: blur(14px) saturate(145%);
     transition:
         border-color 160ms ease,
         background 160ms ease,
@@ -470,19 +492,20 @@ body::after {
 
 .theme-toggle:hover {
     transform: translateY(-1px);
+    opacity: 1;
     border-color: var(--aot-border-strong);
 }
 
 .theme-toggle__thumb {
     display: inline-flex;
-    height: 1.95rem;
-    width: 1.95rem;
+    height: 1.42rem;
+    width: 1.42rem;
     align-items: center;
     justify-content: center;
     border-radius: 999px;
     background: var(--aot-primary);
     color: #000000;
-    box-shadow: 0 10px 24px rgba(23, 229, 23, 0.25);
+    box-shadow: 0 6px 16px rgba(23, 229, 23, 0.2);
     transition: transform 220ms cubic-bezier(0.2, 0.8, 0.2, 1);
 }
 

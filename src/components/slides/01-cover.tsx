@@ -125,10 +125,10 @@ const CoverSlide = () => {
                             </div>
 
                             <Image
-                                src="/aot-academy-logo.png"
-                                alt="AOT Academy"
-                                width={432}
-                                height={176}
+                                src="/aot-logo.svg"
+                                alt="AOT"
+                                width={96}
+                                height={96}
                                 priority
                                 className="h-14 w-auto opacity-90"
                             />

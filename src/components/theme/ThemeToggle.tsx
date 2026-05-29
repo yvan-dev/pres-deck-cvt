@@ -30,10 +30,10 @@ export const ThemeToggle = () => {
             <span
                 className={cn(
                     "theme-toggle__thumb",
-                    isLight ? "translate-x-[2.05rem]" : "translate-x-0"
+                    isLight ? "translate-x-[1.35rem]" : "translate-x-0"
                 )}
             >
-                {isLight ? <Sun size={16} strokeWidth={2.4} /> : <Moon size={16} strokeWidth={2.4} />}
+                {isLight ? <Sun size={12} strokeWidth={2.2} /> : <Moon size={12} strokeWidth={2.2} />}
             </span>
         </button>
     );

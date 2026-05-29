@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" role="img" aria-labelledby="title desc">
+  <title id="title">AOT</title>
+  <desc id="desc">Logo AOT avec marque A verte et point noir.</desc>
+  <path fill="#0b3d12" d="M88 388c-18 0-29-20-20-36L230 70c12-21 42-21 54 0l162 282c9 16-2 36-20 36h-46c-9 0-17-5-22-13L257 197 151 375c-4 8-12 13-22 13H88Z"/>
+  <path fill="#0ee000" d="M291 119c-12-21-42-21-54 0l-3 5 112 196H270c-18 0-33 15-33 33s15 33 33 33h156c18 0 29-20 20-36L291 119Z"/>
+  <circle cx="255" cy="335" r="31" fill="#050505"/>
+</svg>

@@ -70,12 +70,12 @@ export const Slide = ({
                 </div>
             )}
 
-            <div className="aot-logo-mark absolute right-[13.2%] top-[3.05%] z-10 flex items-center rounded-full px-3 py-2">
+            <div className="aot-logo-mark absolute right-[13.2%] top-[3.05%] z-10 flex items-center rounded-full px-2.5 py-2">
                 <Image
-                    src="/aot-academy-logo.png"
-                    alt="AOT Academy"
-                    width={108}
-                    height={44}
+                    src="/aot-logo.svg"
+                    alt="AOT"
+                    width={48}
+                    height={48}
                     style={{ width: "auto", height: "28px" }}
                     priority={slideNumber === 1}
                 />
