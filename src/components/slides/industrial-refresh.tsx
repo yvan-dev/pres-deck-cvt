@@ -33,13 +33,6 @@ const workflow = [
     { label: "Gate", detail: "lint, build, review", icon: GitPullRequest },
 ];
 
-const demoSteps = [
-    "vous partez d'une demande produit concrète",
-    "vous voyez l'agent investiguer le repo",
-    "vous suivez une évolution limitée",
-    "vous vérifiez les tests et les compromis",
-];
-
 const roadmap = [
     {
         horizon: "0-30 j",
@@ -464,21 +457,13 @@ export const DemoBriefingSlide = () => (
                     </p>
                 </div>
 
-                <div className="grid content-center gap-4">
-                {demoSteps.map((step, index) => (
-                    <IndustrialPanel
-                        key={step}
-                        eyebrow={`Séquence ${index + 1}`}
-                        title={step}
-                        tone={index === 2 ? "primary" : index === 3 ? "signal" : "neutral"}
-                        className="bg-[rgba(5,10,8,0.72)]"
-                    >
-                        <div className="flex items-center gap-3 text-sm text-white/70">
-                            <PlayCircle size={17} />
-                            <span>{index < 2 ? "préparer le contexte" : "rendre la preuve visible"}</span>
+                <div className="flex items-end justify-end">
+                    <div className="max-w-xl rounded-[24px] border border-white/12 bg-[rgba(5,10,8,0.58)] p-7 text-right backdrop-blur-xl">
+                        <div className="industrial-kicker text-white/60">Objectif public</div>
+                        <div className="mt-3 text-3xl font-semibold leading-tight text-white">
+                            Voir le contrôle humain pendant l&apos;exécution IA.
                         </div>
-                    </IndustrialPanel>
-                ))}
+                    </div>
                 </div>
             </div>
         </div>
