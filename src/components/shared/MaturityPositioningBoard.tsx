@@ -22,7 +22,7 @@ const toneClasses: Record<
 > = {
     neutral: {
         line: "bg-[rgba(112,128,118,0.55)]",
-        chip: "border-[rgba(112,128,118,0.4)] text-[color:var(--aot-text-muted)]",
+        chip: "border-[color:var(--aot-border-subtle)] text-[color:var(--aot-text-muted)]",
     },
     primary: {
         line: "bg-[color:var(--aot-primary)]",
@@ -49,7 +49,7 @@ export const MaturityPositioningBoard = ({
                 className
             )}
         >
-            <div className="grid grid-cols-[1.35fr_repeat(5,minmax(0,1fr))] border-b border-[color:var(--aot-border-subtle)] bg-[rgba(255,255,255,0.015)]">
+            <div className="grid grid-cols-[1.35fr_repeat(5,minmax(0,1fr))] border-b border-[color:var(--aot-border-subtle)] bg-[color:var(--aot-bg-panel)]">
                 <div className="px-4 py-3" />
                 {[1, 2, 3, 4, 5].map((level) => (
                     <div
@@ -101,7 +101,7 @@ export const MaturityPositioningBoard = ({
                                             key={column}
                                             className="relative border-l border-[color:var(--aot-border-subtle)] px-3 py-4"
                                         >
-                                            <div className="absolute left-1/2 top-1/2 h-px w-[70%] -translate-x-1/2 -translate-y-1/2 bg-[rgba(255,255,255,0.08)]" />
+                                            <div className="absolute left-1/2 top-1/2 h-px w-[70%] -translate-x-1/2 -translate-y-1/2 bg-[color:var(--aot-track)]" />
                                             {isActive ? (
                                                 <div
                                                     className={cn(
@@ -111,12 +111,12 @@ export const MaturityPositioningBoard = ({
                                                 />
                                             ) : null}
                                             {column === row.from ? (
-                                                <div className="absolute left-[12%] top-1/2 h-5 w-5 -translate-y-1/2 rounded-full border border-[rgba(0,0,0,0.5)] bg-[color:var(--aot-bg-base)] shadow-[0_0_0_2px_rgba(255,255,255,0.05)]" />
+                                                <div className="absolute left-[12%] top-1/2 h-5 w-5 -translate-y-1/2 rounded-full border border-[color:var(--aot-border-strong)] bg-[color:var(--aot-bg-surface)] shadow-[0_0_0_2px_var(--aot-bg-panel)]" />
                                             ) : null}
                                             {column === row.to ? (
                                                 <div
                                                     className={cn(
-                                                        "absolute right-[12%] top-1/2 h-5 w-5 -translate-y-1/2 rounded-full border border-[rgba(0,0,0,0.5)] shadow-[0_0_0_2px_rgba(255,255,255,0.05)]",
+                                                        "absolute right-[12%] top-1/2 h-5 w-5 -translate-y-1/2 rounded-full border border-[color:var(--aot-border-strong)] shadow-[0_0_0_2px_var(--aot-bg-panel)]",
                                                         tone.line
                                                     )}
                                                 />
@@ -128,7 +128,7 @@ export const MaturityPositioningBoard = ({
                                 <div className="pointer-events-none absolute inset-y-0 left-0 right-0 flex items-center justify-center">
                                     <span
                                         className={cn(
-                                            "rounded-full border bg-[rgba(7,10,9,0.92)] px-3 py-1 font-mono text-[0.65rem] uppercase tracking-[0.15em]",
+                                            "rounded-full border bg-[color:var(--aot-chip-bg)] px-3 py-1 font-mono text-[0.65rem] uppercase tracking-[0.15em] shadow-[0_12px_26px_rgba(0,0,0,0.14)]",
                                             tone.chip
                                         )}
                                     >
