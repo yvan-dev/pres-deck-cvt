@@ -73,9 +73,9 @@ export const RMC_METRICS: Metric[] = [
     },
     {
         id: "loc-ratio",
-        label: "Ratio LOC IA / humain (code nouveau)",
+        label: "Code nouveau généré par l'IA puis repris par l'humain",
         value: "80 / 20",
-        source: "Standard workflow agent guidé N3",
+        source: "LOC = lignes de code · estimation workflow agent guidé N3",
         isEstimate: true,
     },
     {

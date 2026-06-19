@@ -2,7 +2,6 @@ import type { ComponentType } from "react";
 
 import CoverSlide from "@/components/slides/01-cover";
 import PositioningSlide from "@/components/slides/05-positioning";
-import MaturitySlide from "@/components/slides/06-maturity";
 import {
     AiPoleSlide,
     DemoBriefingSlide,
@@ -62,13 +61,6 @@ export const SLIDES: SlideMeta[] = [
         partLabel: PARTS[2],
         title: "Positionnement AOT et cible",
         component: PositioningSlide,
-    },
-    {
-        id: 5,
-        part: 2,
-        partLabel: PARTS[2],
-        title: "Les 5 niveaux de maturite IA",
-        component: MaturitySlide,
     },
     {
         id: 6,

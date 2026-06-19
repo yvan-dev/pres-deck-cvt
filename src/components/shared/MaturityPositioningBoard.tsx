@@ -80,9 +80,20 @@ export const MaturityPositioningBoard = ({
                             className="grid grid-cols-[1.35fr_repeat(5,minmax(0,1fr))]"
                         >
                             <div className="flex flex-col justify-center gap-1 px-4 py-4">
-                                <span className="text-sm font-medium text-[color:var(--aot-text)]">
-                                    {row.label}
-                                </span>
+                                <div className="flex items-center gap-2">
+                                    <span className="text-sm font-medium text-[color:var(--aot-text)]">
+                                        {row.label}
+                                    </span>
+                                    <span
+                                        className={cn(
+                                            "rounded-full border bg-[color:var(--aot-chip-bg)] px-2 py-0.5 font-mono text-[0.55rem] uppercase tracking-[0.12em]",
+                                            tone.chip
+                                        )}
+                                    >
+                                        N{row.from}
+                                        {row.to !== row.from ? ` -> N${row.to}` : ""}
+                                    </span>
+                                </div>
                                 {row.note ? (
                                     <span className="text-xs text-[color:var(--aot-text-muted)]">
                                         {row.note}
@@ -124,18 +135,6 @@ export const MaturityPositioningBoard = ({
                                         </div>
                                     );
                                 })}
-
-                                <div className="pointer-events-none absolute inset-y-0 left-0 right-0 flex items-center justify-center">
-                                    <span
-                                        className={cn(
-                                            "rounded-full border bg-[color:var(--aot-chip-bg)] px-3 py-1 font-mono text-[0.65rem] uppercase tracking-[0.15em] shadow-[0_12px_26px_rgba(0,0,0,0.14)]",
-                                            tone.chip
-                                        )}
-                                    >
-                                        N{row.from}
-                                        {row.to !== row.from ? ` → N${row.to}` : ""}
-                                    </span>
-                                </div>
                             </div>
                         </div>
                     );

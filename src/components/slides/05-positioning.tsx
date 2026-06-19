@@ -22,7 +22,7 @@ const rows = [
         note: "Les équipes avancées basculent vers N3",
     },
     {
-        label: "AOT cible 12 mois",
+        label: "AOT cible 6 mois",
         from: 3 as const,
         to: 3 as const,
         tone: "primary" as const,

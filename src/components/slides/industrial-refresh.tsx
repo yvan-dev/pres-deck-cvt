@@ -3,7 +3,6 @@
 import Image from "next/image";
 import {
     ArrowRight,
-    Bot,
     Boxes,
     Braces,
     CheckCircle2,
@@ -19,7 +18,6 @@ import {
     ShieldCheck,
     Sparkles,
     Target,
-    Timer,
     UsersRound,
 } from "lucide-react";
 import { Slide } from "@/components/deck/Slide";
@@ -27,10 +25,10 @@ import { IndustrialPanel } from "@/components/shared/IndustrialPanel";
 import { RMC_METRICS } from "@/content/metrics";
 
 const workflow = [
-    { label: "Intent", detail: "besoin metier + contrainte", icon: Radar },
-    { label: "Plan", detail: "scope, fichiers, tests", icon: ClipboardCheck },
-    { label: "Code", detail: "patch supervise", icon: Code2 },
-    { label: "Gate", detail: "lint, build, review", icon: GitPullRequest },
+    { label: "Intent", detail: "besoin metier + contrainte", icon: Radar, image: "/generated/ai-maturity-levels.png" },
+    { label: "Plan", detail: "scope, fichiers, tests", icon: ClipboardCheck, image: "/generated/agent-workflow.png" },
+    { label: "Code", detail: "patch supervise", icon: Code2, image: "/generated/loc-ratio-ai-human.png" },
+    { label: "Gate", detail: "lint, build, review", icon: GitPullRequest, image: "/generated/ai-industrial-hero.png" },
 ];
 
 const roadmap = [
@@ -147,6 +145,27 @@ const levelPrimer = [
     },
 ];
 
+const PanelImage = ({
+    src,
+    alt,
+    className,
+}: {
+    src: string;
+    alt: string;
+    className?: string;
+}) => (
+    <div className={`relative min-h-[6.25rem] overflow-hidden rounded-[14px] border border-[color:var(--aot-border-subtle)] ${className ?? ""}`}>
+        <Image
+            src={src}
+            alt={alt}
+            fill
+            className="object-cover"
+            sizes="24vw"
+        />
+        <div className="absolute inset-0 bg-[linear-gradient(180deg,transparent_0%,rgba(0,0,0,0.38)_100%)]" />
+    </div>
+);
+
 export const RmcProofSlide = () => (
     <Slide slideKey={6} slideNumber={6} eyebrow="Partie 3 / Preuve terrain">
         <div className="grid h-full grid-cols-[0.92fr_1.08fr] gap-7">
@@ -171,8 +190,8 @@ export const RmcProofSlide = () => (
             <div className="grid min-h-0 grid-rows-[1fr_auto] gap-4">
                 <div className="relative min-h-0 overflow-hidden rounded-[22px] border border-[color:var(--aot-border-subtle)]">
                     <Image
-                        src="/generated/rmc-proof.png"
-                        alt="Illustration de preuve terrain RMC"
+                        src="/generated/loc-ratio-ai-human.png"
+                        alt="Illustration du partage entre génération IA et reprise humaine du code"
                         fill
                         className="object-cover"
                         sizes="52vw"
@@ -181,7 +200,7 @@ export const RmcProofSlide = () => (
                     <div className="absolute bottom-4 left-4 right-4">
                         <div className="industrial-kicker text-white/70">Flux visible</div>
                         <div className="mt-1 text-2xl font-semibold text-white">
-                            demande / plan / patch / validation
+                            génération IA / reprise humaine / validation
                         </div>
                     </div>
                 </div>
@@ -234,6 +253,10 @@ export const OperatingModelSlide = () => (
                                 tone={index === 2 ? "primary" : index === 3 ? "signal" : "neutral"}
                                 className="h-full justify-between"
                             >
+                                <PanelImage
+                                    src={item.image}
+                                    alt={`Illustration ${item.label}`}
+                                />
                                 <div className="flex items-center justify-between gap-4">
                                     <div className="text-sm font-medium text-[color:var(--aot-text-muted)]">
                                         {item.detail}
@@ -269,10 +292,20 @@ export const OperatingModelSlide = () => (
                 </div>
             </div>
 
-            <div className="grid grid-cols-3 gap-4">
-                <IndustrialPanel eyebrow="Regle" title="Toujours un plan avant le patch" />
-                <IndustrialPanel eyebrow="Regle" title="Toujours une preuve apres le patch" tone="primary" />
-                <IndustrialPanel eyebrow="Regle" title="Toujours une revue humaine" tone="signal" />
+            <div className="grid grid-cols-3 gap-3">
+                {[
+                    "Plan avant patch",
+                    "Preuve apres patch",
+                    "Revue humaine",
+                ].map((rule, index) => (
+                    <div
+                        key={rule}
+                        className="industrial-chip justify-center py-3 text-center"
+                        data-tone={index === 1 ? "primary" : index === 2 ? "signal" : undefined}
+                    >
+                        {rule}
+                    </div>
+                ))}
             </div>
         </div>
     </Slide>
@@ -396,22 +429,26 @@ export const AiPoleSlide = () => (
     <Slide slideKey={10} slideNumber={10} eyebrow="Partie 4 / Capacité transverse">
         <div className="grid h-full grid-cols-[1.05fr_0.95fr] gap-7">
             <div className="grid grid-cols-2 gap-4">
-                <IndustrialPanel eyebrow="1" title="Standards" tone="primary">
+                <IndustrialPanel eyebrow="1" title="Standards" tone="primary" className="justify-between">
+                    <PanelImage src="/generated/agent-workflow.png" alt="Standards de delivery agentique" />
                     <div className="text-sm leading-relaxed text-[color:var(--aot-text-muted)]">
                         Prompts, checklists, sécurité, critères de définition of done.
                     </div>
                 </IndustrialPanel>
-                <IndustrialPanel eyebrow="2" title="Enablement">
+                <IndustrialPanel eyebrow="2" title="Enablement" className="justify-between">
+                    <PanelImage src="/generated/ai-maturity-levels.png" alt="Formation et montée en compétence IA" />
                     <div className="text-sm leading-relaxed text-[color:var(--aot-text-muted)]">
                         Formation courte, pairing, bibliothèque d&apos;exemples.
                     </div>
                 </IndustrialPanel>
-                <IndustrialPanel eyebrow="3" title="Outillage" tone="accent">
+                <IndustrialPanel eyebrow="3" title="Outillage" tone="accent" className="justify-between">
+                    <PanelImage src="/generated/loc-ratio-ai-human.png" alt="Outils et traces d'exécution IA" />
                     <div className="text-sm leading-relaxed text-[color:var(--aot-text-muted)]">
                         Templates repo, agents, observabilité, coûts et traces.
                     </div>
                 </IndustrialPanel>
-                <IndustrialPanel eyebrow="4" title="Gouvernance" tone="signal">
+                <IndustrialPanel eyebrow="4" title="Gouvernance" tone="signal" className="justify-between">
+                    <PanelImage src="/generated/ai-industrial-hero.png" alt="Gouvernance et contrôle humain" />
                     <div className="text-sm leading-relaxed text-[color:var(--aot-text-muted)]">
                         Usages autorisés, contrôle humain, capitalisation des risques.
                     </div>
@@ -428,7 +465,19 @@ export const AiPoleSlide = () => (
                         Le pôle IA aide les projets à livrer mieux, plus vite, avec moins de variabilité.
                     </p>
                 </div>
-                <Factory className="text-[color:var(--aot-primary)]" size={58} />
+                <div className="grid gap-4">
+                    <div className="relative min-h-[13.5rem] overflow-hidden rounded-[22px] border border-[color:var(--aot-border-subtle)]">
+                        <Image
+                            src="/generated/ai-pole-hub.png"
+                            alt="Hub transverse du pôle IA"
+                            fill
+                            className="object-cover"
+                            sizes="42vw"
+                        />
+                        <div className="absolute inset-0 bg-[linear-gradient(180deg,transparent_0%,rgba(0,0,0,0.5)_100%)]" />
+                    </div>
+                    <Factory className="text-[color:var(--aot-primary)]" size={58} />
+                </div>
             </div>
         </div>
     </Slide>
@@ -534,19 +583,7 @@ export const QaSlide = () => (
                     </h2>
                 </div>
 
-                <div className="grid grid-cols-3 gap-3">
-                    <IndustrialPanel eyebrow="15 min" title="speech">
-                        <Timer size={20} className="text-[color:var(--aot-text-muted)]" />
-                    </IndustrialPanel>
-                    <IndustrialPanel eyebrow="15 min" title="demo" tone="primary">
-                        <Bot size={20} className="text-[color:var(--aot-primary-hi)]" />
-                    </IndustrialPanel>
-                    <IndustrialPanel eyebrow="10 min" title="Q/R" tone="signal">
-                        <UsersRound size={20} className="text-[color:var(--aot-signal-hi)]" />
-                    </IndustrialPanel>
-                </div>
-
-                <div className="relative min-h-[13rem] overflow-hidden rounded-[22px] border border-[color:var(--aot-border-subtle)]">
+                <div className="relative min-h-0 flex-1 overflow-hidden rounded-[22px] border border-[color:var(--aot-border-subtle)]">
                     <Image
                         src="/generated/ai-industrial-hero.png"
                         alt="Illustration de décisions IA industrielles"
