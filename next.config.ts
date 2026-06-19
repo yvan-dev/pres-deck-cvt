@@ -11,8 +11,14 @@ const nextConfig: NextConfig = {
   basePath: isGithubPages ? repoBasePath : undefined,
   assetPrefix: isGithubPages ? repoBasePath : undefined,
   images: {
-    // GitHub Pages has no image optimization server.
-    unoptimized: true,
+    // GitHub Pages has no image optimization server. A custom loader keeps
+    // images static while prefixing `basePath` (which `unoptimized` would drop).
+    loader: "custom",
+    loaderFile: "./image-loader.ts",
+  },
+  env: {
+    // Exposed to the custom image loader so it can prefix asset paths.
+    NEXT_PUBLIC_BASE_PATH: isGithubPages ? repoBasePath : "",
   },
 };
 
